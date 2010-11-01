@@ -8,7 +8,7 @@
 ;;    - add permissions with 'chmod +x bin/rsense'
 ;;   - create config file with 'ruby etc/config.rb > ~/.rsense' (must be IN RSENSE_HOME)
 ;;   - copy the rsense.el file in /etc to the /vendor directory in emacs
-;;
+
 ;; Set hooks
 
 (add-hook 'ruby-mode-hook 'run-coding-hook)

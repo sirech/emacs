@@ -96,8 +96,8 @@
     (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 
 ;; Load language modes, or modes that might need path adjustments for each machine
-;; (require 'starter-kit-lisp)
 ;; (require 'starter-kit-perl)
+(require 'lang-lisp)
 (require 'lang-js)
 (require 'lang-python)
 (require 'lang-xml)
