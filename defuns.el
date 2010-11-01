@@ -275,6 +275,16 @@ Symbols matching the text at point are put first in the completion list."
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
+(defun locate-library-parent-dir (library)
+  "Returns the directory where the given library is situated. The
+result includes a trailing '/' at the end"
+  (let* ((location (locate-library library))
+        (filename-length (length
+                          (car (last (split-string location "/"))))))
+    (substring location
+               0
+               (- (length location) filename-length))))
+
 (defun lorem ()
   "Insert a lorem ipsum."
   (interactive)

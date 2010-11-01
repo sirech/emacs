@@ -11,9 +11,6 @@
 ;; ;; Use pretty Consolas font, with size 11pt
 ;; (set-face-attribute 'default nil :family "Consolas" :height 110)
 
-;; Enable YASnippet
-(setq yasnippet-enabled t)
-
 ;; Record commands used
 (require 'command-frequency)
 (command-frequency-table-load)

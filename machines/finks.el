@@ -11,6 +11,3 @@
 
 ;; Use inconsolata font
 (set-face-attribute 'default nil :family "Inconsolata" :height 160)
-
-;; Enable YASnippet
-(setq yasnippet-enabled t)

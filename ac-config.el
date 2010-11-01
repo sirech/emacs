@@ -1,20 +1,36 @@
 ;;; ac-config.el --- Configuration for the auto-complete module
 ;;
 
-;; HELPER FUNCTIONS
+;; Check availability
+(defun yasnippet-is-present ()
+  "Determines if yasnippet is installed"
+  (locate-library "yasnippet"))
 
-(defun auto-complete-dir ()
-  (let ((location (locate-library "auto-complete")))
-    (substring location
-               0
-               (- (length location) (length "auto-complete.el")))))
+;; HELPER FUNCTIONS
 
 (defun turn-on-autocomplete ()
   (interactive)
   (require 'auto-complete)
   (auto-complete-mode 1))
 
+(defun activate-yasnippet ()
+  (when (yasnippet-is-present)
+    (require 'yasnippet)
+    (when ac-sources
+      (setq-default ac-sources (append '(ac-source-yasnippet) ac-sources)))))
+
 ;; SETTINGS
+
+;; YASnippet is included here
+(eval-after-load 'yasnippet
+  '(progn
+     (yas/initialize)
+     (yas/load-directory (concat (locate-library-parent-dir "yasnippet") "snippets"))
+     ;; (yas/load-directory yas/root-directory)
+     (yas/minor-mode-on)
+     ;; (add-to-list 'hippie-expand-try-functions-list 'yas/hippie-try-expand)
+     ;; (setq yas/prompt-functions '(yas/x-prompt yas/dropdown-prompt))
+     ))
 
 ;; I don't know how to avoid repeating the functions, as the
 ;; ac-*-mode-setup functions don't exist until auto-complete-config is
@@ -41,8 +57,9 @@
 
 (eval-after-load 'auto-complete
   '(progn
-     (add-to-list 'ac-dictionary-directories (concat (auto-complete-dir) "ac-dict"))
+     (add-to-list 'ac-dictionary-directories (concat (locate-library-parent-dir "auto-complete") "ac-dict"))
      (setq-default ac-sources '(ac-source-abbrev ac-source-dictionary ac-source-words-in-same-mode-buffers))
+     (activate-yasnippet)
      (setq ac-comphist-file (expand-file-name "~/.ac-comphist"))
      (set-face-background 'ac-candidate-face "white")
      (setq ac-override-local-map t)

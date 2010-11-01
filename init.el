@@ -67,13 +67,6 @@
 (package-initialize)
 (require 'starter-kit-elpa)
 
-;; Define variables to enable/disable specific modes
-(defvar nxhtml-enabled nil
-  "Variable that controls the activation of the nxhtml mode")
-
-(defvar yasnippet-enabled nil
-  "Variable that controls the activation of the yasnippet mode")
-
 ;; Load up customizations
 
 (require 'defuns)
@@ -112,16 +105,5 @@
 (require 'lang-java)
 (require 'lang-ruby)
 (require 'w3m-config)
-
-;; Load optional modes
-(when yasnippet-enabled  
-  (require 'yasnippet)
-  (yas/initialize)
-  (yas/load-directory (concat dotfiles-dir "/vendor/yasnippet/snippets"))
-  ;; (yas/load-directory yas/root-directory)
-  (yas/minor-mode-on)
-  (add-to-list 'hippie-expand-try-functions-list 'yas/hippie-try-expand)
-  (setq yas/prompt-functions '(yas/x-prompt yas/dropdown-prompt))
-  )
 
 ;;; init.el ends here

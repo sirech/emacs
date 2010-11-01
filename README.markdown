@@ -18,9 +18,9 @@ Some interesting places to learn more about emacs:
 
 * [A pretty good Screencast](http://peepcode.com/products/meet-emacs)
 
-* [[http://www.dotemacs.de/]]
+* http://www.dotemacs.de/
 
-* [[http://snarfed.org/space/why%20I%20don't%20run%20shells%20inside%20Emacs]]
+* http://snarfed.org/space/why%20I%20don't%20run%20shells%20inside%20Emacs
   
 * [This page is not actively maintained anymore, but still has good
   stuff](http://emacsblog.org/)
