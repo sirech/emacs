@@ -6,6 +6,7 @@
                                    'ruby-mode
                                    'inf-ruby
                                    'css-mode
+                                   'find-file-in-project
                                    'magit
                                    'gist
                                    'js2-mode)

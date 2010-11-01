@@ -43,14 +43,17 @@
       save-place-file (concat dotfiles-dir "places"))
 
 ;; Enable useful commands
-(put 'narrow-to-region 'disabled nil)  
+(put 'narrow-to-region 'disabled nil)
 
 ;; Start server
 (when (and (= emacs-major-version 23) (equal window-system 'w32))
   (defun server-ensure-safe-dir (dir) "Noop" t)) ; Suppress error "directory
-                                                 ; ~/.emacs.d/server is unsafe"
-                                                 ; on windows.
+                                        ; ~/.emacs.d/server is unsafe"
+                                        ; on windows.
 (server-start)
+
+(add-to-list 'safe-local-variable-values '(lexical-binding . t))
+(add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
 
 ;; Set this to whatever browser you use
 ;; (setq browse-url-browser-function 'browse-url-firefox)
@@ -123,7 +126,7 @@ comma-separated value files." t)
 
 ;; Default to unified diffs
 (setq diff-switches "-u")
-     
+
 ;; COMPLETION
 
 ;; Hippie expand: at times perhaps too hip
@@ -142,16 +145,16 @@ comma-separated value files." t)
 
 ;; make bookmarks persistent as default
 (setq-default bm-buffer-persistence t)
- 
+
 ;; Loading the repository from file when on start up.
 (add-hook' after-init-hook 'bm-repository-load)
- 
+
 ;; Restoring bookmarks when on file find.
 (add-hook 'find-file-hooks 'bm-buffer-restore)
- 
+
 ;; Saving bookmark data on killing a buffer
 (add-hook 'kill-buffer-hook 'bm-buffer-save)
- 
+
 ;; Saving the repository to file when on exit.
 ;; kill-buffer-hook is not called when emacs is killed, so we
 ;; must save all bookmarks first.

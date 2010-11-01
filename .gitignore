@@ -12,3 +12,4 @@ vendor/cedet
 vendor/jdee
 vendor/pymacs.el
 vendor/rsense.el
+tramp

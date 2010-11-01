@@ -1,7 +1,5 @@
 ;;; init.el --- Where all the magic begins
 ;;
-;; Part of the Emacs Starter Kit
-;;
 ;; This is the first thing to get loaded.
 ;;
 ;; "Emacs outshines all other editing software in approximately the
@@ -35,8 +33,12 @@
 (add-to-loadpath (concat dotfiles-dir "vendor") t)
 
 ;; Sub-Subdirs have to be loaded manually ...
-(add-to-list 'load-path (concat dotfiles-dir "vendor/jdee/lisp"))
-(add-to-list 'load-path (concat dotfiles-dir "vendor/cedet/common"))
+(defun add-to-loadpath-if-exists (path)
+  (when (file-directory-p path)
+    (add-to-loadpath path)))
+
+(add-to-loadpath-if-exists (concat dotfiles-dir "vendor/jdee/lisp"))
+(add-to-loadpath-if-exists (concat dotfiles-dir "vendor/cedet/common"))
 
 (setq autoload-file (concat dotfiles-dir "loaddefs.el"))
 (setq package-user-dir (concat dotfiles-dir "elpa"))
@@ -112,9 +114,6 @@
 (require 'w3m-config)
 
 ;; Load optional modes
-(when nxhtml-enabled
-  (load "elpa-to-submit/nxhtml/autostart"))
-
 (when yasnippet-enabled  
   (require 'yasnippet)
   (yas/initialize)

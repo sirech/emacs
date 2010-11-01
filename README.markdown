@@ -1,53 +1,88 @@
-# Emacs Starter Kit
+# Emacs Configuration
 
-The Starter Kit should provide a saner set of defaults than you get
-normally with Emacs. It was originally intended for beginners, but it
-should provide a reasonable working environment for anyone using Emacs
-for dynamic languages. It also bundles a number of useful libraries
-that are not distributed with Emacs for various reasons.
+This is a configuration for _Emacs_. It focuses mainly on programming,
+with settings for many languages. It also allows custom settings for
+each OS/Machine.
 
-The latest version is at http://github.com/technomancy/emacs-starter-kit/
+This configuration started in Jan 2010, derived from the [Emacs
+Starter Kit](http://github.com/technomancy/emacs-starter-kit/).
 
-## Learning
+# Resources for Emacs
 
-This won't teach you Emacs, but it'll make it easier to get
-comfortable. To access the tutorial, press control-h followed by t.
+Some interesting places to learn more about emacs:
 
-You may also find the [PeepCode Meet Emacs
-screencast](http://peepcode.com/products/meet-emacs) helpful. The
-[Emacs Wiki](http://emacswiki.org) is also very handy.
+* [The best Wiki about Emacs](www.emacswiki.org)
+
+* [Tips from Steve
+  Yegge](http://steve.yegge.googlepages.com/effective-emacs)
+
+* [A pretty good Screencast](http://peepcode.com/products/meet-emacs)
+
+* [[http://www.dotemacs.de/]]
+
+* [[http://snarfed.org/space/why%20I%20don't%20run%20shells%20inside%20Emacs]]
+  
+* [This page is not actively maintained anymore, but still has good
+  stuff](http://emacsblog.org/)
+  
+* [Some more tricks](http://sachachua.com/wp/category/emacs/)
 
 ## Installation
 
-1. Install GNU Emacs (at least version 22, 23 is preferred)
-   Use your package manager if you have one.
-   Otherwise Mac users may get [some prebuilt binaries](http://emacsformacosx.com/), and
-   Windows users can get them [from GNU](http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-23.1-bin-i386.zip).
-2. Move the directory containing this file to ~/.emacs.d
-   (If you already have a directory at ~/.emacs.d move it out of the
-   way and put this there instead.)
-3. Launch Emacs!
+1. Grab GNU Emacs (23.* version!), use apt or another package manager
+for linux. For Mac OS X, use [some prebuilt
+binaries](http://emacsformacosx.com/) (I dislike both Carbon- and
+Aquamacs). Windows users can get it directly [from
+GNU](http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-23.1-bin-i386.zip).
+
+2. Link the directory with `ln -s ~/{emacs_dir} ~/.emacs`.
 
 If you find yourself missing some autoloads after an update (which
 should manifest itself as "void function: foobar" errors) try M-x
 regen-autoloads. After some updates an M-x recompile-init will be
 necessary; this should be noted in the commit messages.
 
-If you want to keep your regular ~/.emacs.d in place and just launch a
-single instance using the starter kit, try the following invocation:
+## Byte Compiling
 
-  $ emacs -q -l ~/src/emacs-starter-kit/init.el
+This config tries very hard to avoid loading packages or other
+resources until they are required, which should keep the startup time
+to a minimum. That said, it can useful to byte-compile some
+packages. The command to do that is:
 
-Note that having a ~/.emacs file might override the starter kit
-loading, so if you've having trouble loading it, make sure that file
-is not present.
+`C-u 0 M-x byte-recompile-directory`
+
+It is a good idea to apply this command to the _vendor_ and
+_elpa-to-submit_ folders. It is not necessary to do so for _elpa_, as
+they are already compiled. __Don't__ apply this to the common
+settings, like _bindings_, _misc_, or the _lang_ folder. If you change
+the .el file, the .elc might get outdated and emacs will be using the
+wrong file.
 
 ## Structure
 
 The init.el file is where everything begins. It's the first file to
-get loaded. The starter-kit-* files provide what I consider to be
-better defaults, both for different programming languages and for
-built-in Emacs features like bindings or registers.
+get loaded. Other relevant files are:
+
+* defuns.el: Some useful functions for editing and configuration.
+
+* bindings.el: Some changes to the default keybindings, plus new ones
+  for our custom functions.
+
+* misc.el: Visual settings, colors, UTF-8 for everything, and some
+  other settings.
+
+* registers.el: Registers config.
+
+* (e)shell-utils.el: Settings to use shells inside emacs. Not very
+  much used as I've been using the shell directly.
+
+* ac-config.el: Settings for the auto complete mode, which is very
+  useful for most programming modes.
+
+* flymake-config.el: Helpers and settings to use flymake for syntax
+  error highlighting.
+
+* w3m-config: Configuration to use the _w3m_ browser inside emacs.
 
 Files that are pending submission to ELPA are bundled with the starter
 kit under the directory elpa-to-submit/. The understanding is that
@@ -56,46 +91,51 @@ into packages, and the bundling of them is temporary. For these
 libraries, autoloads will be generated and kept in the loaddefs.el
 file. This allows them to be loaded on demand rather than at startup.
 
-There are also a few files that are meant for code that doesn't belong
-in the Starter Kit. First, the user-specific-config file is the file
-named after your user with the extension ".el". In addition, if a
-directory named after your user exists, it will be added to the
-load-path, and any elisp files in it will be loaded. Finally, the
-Starter Kit will look for a file named after the current hostname
-ending in ".el" which will allow host-specific configuration. This is
-where you should put code that you don't think would be useful to
-everyone. That will allow you to merge with newer versions of the
-starter-kit without conflicts.
+## User/Machine/OS Specific settings
+
+It is possible to add extra configuration, by creating files that are
+run depending on where emacs is running.
+
+First, a specific configuration is loaded based on the OS that emacs is
+running in. The files are located in the _os_ folder. One example is
+configuring the special keys for Mac OS X.
+
+A file based on the hostname of the machine is also loaded. Here I
+usually set up the size of the emacs window, the font and some
+specific environment variables.
+
+Lastly, it is also possible to run a configuration file based on the
+user name. This is currently not used.
+
+## Language settings
+
+As this config is oriented towards programming, languages have usually
+their own config file. They are found in the _lang_ folder. They are
+centered around setting the correct mode, specific bindings, syntax
+error highlight and autocomplete facilities. Some of the modes need
+extra packages or external programs. These are not included in the
+distribution to avoid bloat. However, each mode has detailed
+instructions in its header about how to install them. Usually, the
+config auto-detects the availability, so that it is not necessary to
+set extra variables, or comment/uncomment things.
 
 ## Emacs Lisp Package Archive
 
 Libraries from [ELPA](http://tromey.com/elpa) are preferred when
 available since dependencies are handled automatically, and the burden
 to update them is removed from the user. In the long term, ideally
-everything would be installed via ELPA, and only package.el would need
-to be distributed with the starter kit. (Or better yet, package.el
-would come with Emacs...) See starter-kit-elpa.el for a list of
-libraries that are pending submission to ELPA. Packages get installed
-in the elpa/ directory.
+everything would be installed via ELPA, and only _package.el_ would
+need to be distributed with the starter kit. (Or better yet,
+package.el would come with Emacs...) See _starter-kit-elpa.el_ for a
+list of libraries that are pending submission to ELPA. Packages get
+installed in the _elpa/_ directory.
 
-There's no vendor/ directory in the starter kit because if an external
-library is useful enough to be bundled with the starter kit, it should
-be useful enough to submit to ELPA so that everyone can use it, not
-just users of the starter kit.
+## Test
 
-Sometimes packages are removed from the Starter Kit as they get added
-to ELPA itself. This has occasionally caused problems with certain
-packages. If you run into problems with such a package, try removing
-everything from inside the elpa/ directory and invoking M-x
-starter-kit-elpa-install in a fresh instance.
-
-## Variants of Emacs
-
-The Starter Kit is designed to work with GNU Emacs version 22 or
-greater. Using it with forks or other variants is not supported. It
-probably won't work with XEmacs, though some have reported getting it
-to work with Aquamacs. However, since Aquamacs is not portable,
-it's difficult to test in it, and breakage is common.
+This configuration is used almost daily under Mac OS X, frequently
+under Linux (Ubuntu), and occasionally under Windows (with help of
+cygwin), for general text editing, and for programming. In case of
+problems, running the last version of everything usually helps.
 
 ## Contributing
 
@@ -115,8 +155,3 @@ works. Grep the project for TODO for other things.
 
 Files are licensed under the same license as Emacs unless otherwise
 specified. See the file COPYING for details.
-
-The latest version is at http://github.com/technomancy/emacs-starter-kit/
-
-On Unix, /home/$USER/.emacs.d, on windows Documents and Settings/%your
-user name%/Application Data
