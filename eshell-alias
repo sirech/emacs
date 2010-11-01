@@ -1,0 +1,3 @@
+alias pytags gettags py
+alias gettags find . -name "*.$1" | xargs etags -a -f TAGS
+alias ll ls -l $*

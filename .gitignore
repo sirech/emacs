@@ -1,1 +1,14 @@
 .DS_Store
+auto-save-list
+backups
+server
+places
+lib/*
+elpa/*
+*.elc
+vendor/yasnippet
+vendor/emacs-w3m
+vendor/cedet
+vendor/jdee
+vendor/pymacs.el
+vendor/rsense.el
