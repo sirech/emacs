@@ -1,5 +1,11 @@
 ;;; ac-config.el --- Configuration for the auto-complete module
 ;;
+;; This settings have some external dependencies:
+;;  * yasnippet:
+;;   - Download normal install from
+;; http://code.google.com/p/yasnippet/
+;;   - extract to a directory in the load-path (preferably vendor/),
+;; and rename folder to yasnippet
 
 ;; Check availability
 (defun yasnippet-is-present ()
