@@ -5,6 +5,9 @@
       '((left . 0) (top . 0)
 	(width . 158) (height . 55)))
 
+;; Export env variables
+(setenv "RSENSE_HOME" "/opt/rsense")
+
 ;; Use inconsolata font
 (set-face-attribute 'default nil :family "Inconsolata" :height 120)
 

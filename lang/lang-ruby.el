@@ -8,6 +8,8 @@
 ;;    - add permissions with 'chmod +x bin/rsense'
 ;;   - create config file with 'ruby etc/config.rb > ~/.rsense' (must be IN RSENSE_HOME)
 ;;   - copy the rsense.el file in /etc to the /vendor directory in emacs
+;;
+;; NOTE: As of today (11/2010), it is not possible to use RSense with JRuby
 
 ;; Set hooks
 
