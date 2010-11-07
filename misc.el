@@ -52,6 +52,9 @@
                                         ; on windows.
 (server-start)
 
+;; Start SMEX
+(smex-initialize)
+
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
 

@@ -68,7 +68,7 @@
 (require 'starter-kit-elpa)
 
 ;; Load up customizations
-
+(require 'smex)
 (require 'defuns)
 (require 'bindings)
 (require 'server) ; load before misc to avoid problem in windows

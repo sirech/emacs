@@ -10,7 +10,8 @@
                                    'magit
                                    'gist
                                    'js2-mode
-                                   'full-ack)
+                                   'full-ack
+                                   'smex)
   "Libraries that should be installed by default.")
 
 (defun starter-kit-elpa-install ()
