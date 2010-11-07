@@ -42,6 +42,9 @@ should manifest itself as "void function: foobar" errors) try M-x
 regen-autoloads. After some updates an M-x recompile-init will be
 necessary; this should be noted in the commit messages.
 
+3. Map the CAPS key to control. It is very easy to do in Mac OS X and
+Linux, you'll need some registry files for windows.
+
 ## Byte Compiling
 
 This config tries very hard to avoid loading packages or other

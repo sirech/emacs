@@ -9,7 +9,8 @@
                                    'find-file-in-project
                                    'magit
                                    'gist
-                                   'js2-mode)
+                                   'js2-mode
+                                   'full-ack)
   "Libraries that should be installed by default.")
 
 (defun starter-kit-elpa-install ()

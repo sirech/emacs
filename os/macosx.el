@@ -24,3 +24,8 @@
         ("1.5" . "/System/Library/Frameworks/JavaVM.framework/Versions/1.5")))
 (setq jde-jdk "1.6")
 
+;; Ignore .DS_Store files
+(eval-after-load 'ido-mode
+  '(progn
+     (add-to-list 'ido-ignore-files "\\.DS_Store")))
+

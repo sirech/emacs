@@ -96,6 +96,12 @@
 (defvar coding-hook nil
   "Hook that gets run on activation of any programming mode.")
 
+;; ACK-GREP
+(autoload 'ack-same "full-ack" nil t)
+(autoload 'ack "full-ack" nil t)
+(autoload 'ack-find-same-file "full-ack" nil t)
+(autoload 'ack-find-file "full-ack" nil t)
+
 ;; ALIAS
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'qrr 'query-replace-regexp)
