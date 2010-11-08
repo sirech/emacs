@@ -3,7 +3,7 @@
 ;; (set-frame-size-according-to-resolution)
 (setq initial-frame-alist
       '((left . 0) (top . 0)
-	(width . 158) (height . 55)))
+        (width . 160) (height . 58)))
 
 ;; Export env variables
 (setenv "RSENSE_HOME" "/opt/rsense")
