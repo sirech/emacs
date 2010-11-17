@@ -14,7 +14,7 @@
 non-nill, the files with the given extension are set to use the
 given init function. Additionally, one can also give a cleanup
 function and a error line patterns variable."
-  (when (funcall is-available-fun)
+  (when (or (not is-available-fun) (funcall is-available-fun))
     (let ( (mask (concat "\\." extension "\\'")) )
       (remove-extension-flymake extension)
       (if flymake-cleanup

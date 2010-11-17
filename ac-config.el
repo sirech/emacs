@@ -53,7 +53,6 @@
 
 (add-hook 'c-mode-common-hook 'ac-cc-setup-hook)
 (add-hook 'css-mode-hook 'ac-css-setup-hook)
-(add-hook 'sh-mode-hook 'turn-on-autocomplete)
 
 (eval-after-load 'auto-complete
   '(progn

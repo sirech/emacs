@@ -104,6 +104,7 @@
 (require 'lang-lua)
 (require 'lang-java)
 (require 'lang-ruby)
+(require 'lang-bash)
 (require 'w3m-config)
 
 ;;; init.el ends here
