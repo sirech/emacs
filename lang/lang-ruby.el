@@ -113,7 +113,7 @@ exec-to-string command, but it works and seems fast"
 ;; Auto Syntax Error highlight, credit to the starter kit from www.peepcode.com
 
 (defun flymake-ruby-init ()
-  (custom-flymake-init "ruby" "-c"))
+  (custom-flymake-init "ruby" "-c" "-w"))
 
 ;; (add-hook 'ruby-mode-hook
 ;;           (lambda ()
