@@ -14,9 +14,9 @@
 non-nill, the files with the given extension are set to use the
 given init function. Additionally, one can also give a cleanup
 function and a error line patterns variable."
-  (when (or (not is-available-fun) (funcall is-available-fun))
-    (let ( (mask (concat "\\." extension "\\'")) )
-      (remove-extension-flymake extension)
+  (let ( (mask (concat "\\." extension "\\'")) )
+    (remove-extension-flymake extension)
+    (when (or (not is-available-fun) (funcall is-available-fun))
       (if flymake-cleanup
           (add-to-list 'flymake-allowed-file-name-masks
                        (list mask flymake-init flymake-cleanup))
@@ -55,8 +55,8 @@ function and a error line patterns variable."
      ;; Remove extensions without a working config
      (remove-extension-flymake "\\.xml\\'")
      (remove-extension-flymake "\\.html?\\'")
-     (remove-extension-flymake "[0-9]+\\.tex\\'")     
-  ))
+     (remove-extension-flymake "[0-9]+\\.tex\\'")
+     ))
 
 (provide 'flymake-config)
 ;;; flymake-config.el ends here
