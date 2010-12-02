@@ -96,7 +96,7 @@
 (defun uniquify-all-lines-buffer ()
   "Delete duplicate lines in buffer and keep first occurrence."
   (interactive "*")
-  (uniquify-lines-region (point-min) (point-max)))
+  (uniquify-all-lines-region (point-min) (point-max)))
 
 ;; Buffer-related
 
