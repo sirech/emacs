@@ -106,6 +106,13 @@
 (define-key ctl-x-r-map "p" 'string-insert-rectangle)
 
 ;;
+;; EDITING
+;;
+(global-set-key (kbd "M-<down>") 'move-text-down)
+(global-set-key (kbd "M-<up>") 'move-text-up)
+
+
+;;
 ;; SHELL
 ;;
 

@@ -142,6 +142,41 @@ Symbols matching the text at point are put first in the completion list."
            (position (cdr (assoc selected-symbol name-and-pos))))
       (goto-char position))))
 
+;; Credit to
+;; http://groups.google.com/group/gnu.emacs.help/msg/a784fbb684a24e17
+(defun move-text-internal (arg)
+   (cond
+    ((and mark-active transient-mark-mode)
+     (if (> (point) (mark))
+        (exchange-point-and-mark))
+     (let ((column (current-column))
+          (text (delete-and-extract-region (point) (mark))))
+       (forward-line arg)
+       (move-to-column column t)
+       (set-mark (point))
+       (insert text)
+       (exchange-point-and-mark)
+       (setq deactivate-mark nil)))
+    (t
+     (beginning-of-line)
+     (when (or (> arg 0) (not (bobp)))
+       (forward-line)
+       (when (or (< arg 0) (not (eobp)))
+        (transpose-lines arg))
+       (forward-line -1)))))
+
+(defun move-text-down (arg)
+   "Move region (transient-mark-mode active) or current line
+  arg lines down."
+   (interactive "*p")
+   (move-text-internal arg))
+
+(defun move-text-up (arg)
+   "Move region (transient-mark-mode active) or current line
+  arg lines up."
+   (interactive "*p")
+   (move-text-internal (- arg))) 
+
 ;;; CODING-HOOKS
 
 ;; We have a number of turn-on-* functions since it's advised that lambda
@@ -279,8 +314,8 @@ Symbols matching the text at point are put first in the completion list."
   "Returns the directory where the given library is situated. The
 result includes a trailing '/' at the end"
   (let* ((location (locate-library library))
-        (filename-length (length
-                          (car (last (split-string location "/"))))))
+         (filename-length (length
+                           (car (last (split-string location "/"))))))
     (substring location
                0
                (- (length location) filename-length))))
