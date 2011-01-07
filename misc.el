@@ -51,6 +51,8 @@
                                         ; ~/.emacs.d/server is unsafe"
                                         ; on windows.
 (server-start)
+(setq edit-server-new-frame nil)
+(edit-server-start) ;; This one is for the Edit with Emacs Chrome Extension
 
 ;; Start SMEX
 (smex-initialize)
