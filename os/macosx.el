@@ -32,9 +32,22 @@
 ;; Change focus automatically when emacsclient is used to edit a file.
 ;; Credit to
 ;; http://stackoverflow.com/questions/945709/emacs-23-os-x-multi-tty-and-emacsclient
+
+;; Switch to the given app
+(defun ns-switch-to (app)
+  (ns-do-applescript (concat "tell application \"" app "\" to activate")))
+
 (defun ns-raise-emacs ()
-  (ns-do-applescript "tell application \"Emacs\" to activate"))
-(defun end-server-edit ()
-  (ns-do-applescript "tell application \"Terminal\" to activate"))
+  (ns-switch-to "Emacs"))
+
+(defun ns-raise-terminal ()
+  (ns-switch-to "Terminal"))
+
+(defun ns-raise-chrome ()
+  (ns-switch-to "Google Chrome"))
+
 (add-hook 'server-visit-hook 'ns-raise-emacs)
-(add-hook 'server-done-hook 'end-server-edit)
+(add-hook 'server-done-hook 'ns-raise-terminal)
+
+(add-hook 'edit-server-start-hook 'ns-raise-emacs)
+(add-hook 'edit-server-done-hook 'ns-raise-chrome)
