@@ -3,13 +3,16 @@
 ;; Part of the Emacs Starter Kit
 
 (defvar starter-kit-packages (list 'idle-highlight
-                                   'ruby-mode
-                                   'inf-ruby
-                                   'css-mode
                                    'find-file-in-project
-                                   'magit
-                                   'gist
+                                   'ruby-mode
+                                   'lua-mode
                                    'js2-mode
+                                   'css-mode
+                                   'paredit
+                                   'inf-ruby
+                                   'magit
+                                   'htmlize
+                                   'gist
                                    'full-ack
                                    'smex)
   "Libraries that should be installed by default.")
