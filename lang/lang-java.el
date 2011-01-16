@@ -12,15 +12,36 @@
 ;; The functionality is turned on only if the required
 ;; dependencies can be found.
 
+;; Alternative guide:
+;;  * eclipse:
+;;   - http://eclipse.org/downloads/index.php
+;;
+;;  * eclim:
+;;   - http://eclim.org/download.html
+;;   - run the jar file, which launches the installation
+;; automatically.
+;;   - eclimd, under ${ECLIPSE_DIR}/eclimd has to be running.
+;;   - put eclim in the path, with something like: ln -s
+;; ${eclipse_dir}/plugins/org.eclim_${version}/bin/eclim /usr/local/bin
+;;
+;;  * emacs-eclim:
+;;   - https://github.com/senny/emacs-eclim
+
 ;; Set hooks
 
-(add-hook 'jde-mode-hook 'run-coding-hook)
+(add-hook 'java-mode-hook 'run-coding-hook)
+(add-hook 'java-mode-hook 'java-activate-ide)
+;; (add-hook 'jde-mode-hook 'run-coding-hook)
 (add-hook 'jde-mode-hook 'jde-activate-ide)
 
 ;; Check availability
 
 (defvar ecj-location (concat lib-dir "ecj.jar")
   "The location of the ecj compiler")
+
+(defun eclim-is-present ()
+  "Determines if the IDE can be run"
+  (locate-library "eclim"))
 
 (defun jde-ide-is-present ()
   "Determines if the IDE can be run"
@@ -44,12 +65,21 @@
 
 (defun jde-activate-ide ()
   (turn-on-flymake 'ecj-is-present)
-  (turn-on-autocomplete)
-  (when (jde-ide-is-present)
-    (jde-activate-autocomplete)))
+  (turn-on-autocomplete))  
+  ;; (when (jde-ide-is-present)
+  ;;   (jde-activate-autocomplete)))
 
-(defun jde-activate-autocomplete ()
-  (add-to-list 'ac-sources 'ac-source-jde))
+
+;; (defun jde-activate-autocomplete ()
+;;   (add-to-list 'ac-sources 'ac-source-jde))
+
+(defun java-activate-ide ()
+  (when (eclim-is-present)
+    (java-activate-autocomplete)))
+
+(defun java-activate-autocomplete ()
+  (require 'auto-complete-config)
+  (add-to-list 'ac-sources 'ac-source-eclim))
 
 ;; Initialization
 
@@ -62,6 +92,21 @@
   (require 'jde-eclipse-compiler-server)
   (setq jde-compiler (list (list "eclipse java compiler server" ecj-location)))
   (setq jde-ecj-command-line-args (list "-d" "none" "-target" "1.6" "-source" "1.6" "-proceedOnError")))
+
+(defun load-eclim ()
+  (require 'eclim)
+  (setq eclim-auto-save t)
+  (global-eclim-mode))
+
+(eval-after-load 'java
+  (progn
+    (when (eclim-is-present)
+      (load-eclim))))
+
+(eval-after-load 'eclim
+  '(progn
+     (define-key eclim-mode-map (kbd "M-.") 'eclim-java-find-declaration)
+     ))
 
 (eval-after-load 'jde-mode
   '(progn
@@ -86,50 +131,50 @@
 
 ;; Auto-completion
 
-(defvar ac-source-jde
-  '((candidates
-     . (lambda ()
-         (mapcar 'cdr (jde-autocomplete)))))
-  "Source for JDE")
+;; (defvar ac-source-jde
+;;   '((candidates
+;;      . (lambda ()
+;;          (mapcar 'cdr (jde-autocomplete)))))
+;;   "Source for JDE")
 
-(defun jde-autocomplete ()
-  (interactive)
-  (let* ((pair (jde-parse-java-variable-at-point))
-         jde-parse-attempted-to-import)
-    ;;resetting jde-complete-current-list
-    (setq jde-complete-current-list nil)
-    (if pair
-        (condition-case err
-            (jde-autocomplete-pair (jde-complete-get-pair pair nil))
-          (error (condition-case err
-                     (jde-autocomplete-pair (jde-complete-get-pair pair t)))
-                 (error (message "%s" (error-message-string err)))))
-      (message "No completion at this point"))))
+;; (defun jde-autocomplete ()
+;;   (interactive)
+;;   (let* ((pair (jde-parse-java-variable-at-point))
+;;          jde-parse-attempted-to-import)
+;;     ;;resetting jde-complete-current-list
+;;     (setq jde-complete-current-list nil)
+;;     (if pair
+;;         (condition-case err
+;;             (jde-autocomplete-pair (jde-complete-get-pair pair nil))
+;;           (error (condition-case err
+;;                      (jde-autocomplete-pair (jde-complete-get-pair pair t)))
+;;                  (error (message "%s" (error-message-string err)))))
+;;       (message "No completion at this point"))))
 
-(defun jde-autocomplete-pair (pair)
-  (let ((access (jde-complete-get-access pair))
-        completion-list)
-    (progn
-      (if access
-          (setq completion-list
-                (jde-complete-find-completion-for-pair pair nil access))
-        (setq completion-list (jde-complete-find-completion-for-pair pair)))
-      ;;if the completion list is nil check if the method is in the current
-      ;;class(this)
-      (if (null completion-list)
-          (setq completion-list (jde-complete-find-completion-for-pair
-                                 (list (concat "this." (car pair)) "")
-                                 nil jde-complete-private)))
-      ;;if completions is still null check if the method is in the
-      ;;super class
-      (if (null completion-list)
-          (setq completion-list (jde-complete-find-completion-for-pair
-                                 (list (concat "super." (car pair)) "")
-                                 nil jde-complete-protected)))
+;; (defun jde-autocomplete-pair (pair)
+;;   (let ((access (jde-complete-get-access pair))
+;;         completion-list)
+;;     (progn
+;;       (if access
+;;           (setq completion-list
+;;                 (jde-complete-find-completion-for-pair pair nil access))
+;;         (setq completion-list (jde-complete-find-completion-for-pair pair)))
+;;       ;;if the completion list is nil check if the method is in the current
+;;       ;;class(this)
+;;       (if (null completion-list)
+;;           (setq completion-list (jde-complete-find-completion-for-pair
+;;                                  (list (concat "this." (car pair)) "")
+;;                                  nil jde-complete-private)))
+;;       ;;if completions is still null check if the method is in the
+;;       ;;super class
+;;       (if (null completion-list)
+;;           (setq completion-list (jde-complete-find-completion-for-pair
+;;                                  (list (concat "super." (car pair)) "")
+;;                                  nil jde-complete-protected)))
 
-      (if completion-list
-          jde-complete-current-list
-        (error "No completion at this point")))))
+;;       (if completion-list
+;;           jde-complete-current-list
+;;         (error "No completion at this point")))))
 
 ;; (defun my-jde-mode-hook ()
 ;;   "Hook for running Java file..."
