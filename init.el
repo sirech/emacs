@@ -29,7 +29,7 @@
 
 (add-to-loadpath dotfiles-dir)
 (add-to-loadpath (concat dotfiles-dir "lang"))
-(add-to-loadpath (concat dotfiles-dir "elpa-to-submit"))
+(add-to-loadpath (concat dotfiles-dir "elpa-to-submit") t)
 (add-to-loadpath (concat dotfiles-dir "vendor") t)
 
 ;; Sub-Subdirs have to be loaded manually ...

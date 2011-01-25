@@ -11,9 +11,10 @@
 
 (add-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
-;; Use grey background and white cursor
-(set-background-color "grey86")
-(set-cursor-color "yellow1")
+;; Theme
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-jedit-grey)
 
 ;; UTF-8 all the way
 
