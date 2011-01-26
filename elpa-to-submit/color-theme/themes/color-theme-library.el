@@ -3688,6 +3688,7 @@ fonts."
      (font-lock-warning-face ((t (:bold t :foreground "Pink"))))
      (font-lock-constant-face ((t (:foreground "DarkCyan"))))
      (font-lock-type-face ((t (:foreground "DarkRed"))))
+     (font-lock-variable-name-face ((t (:foreground "Blue"))))
      (font-lock-function-name-face ((t (:foreground "Green4"))))
      (font-lock-builtin-face ((t (:bold t :foreground "DarkRed"))))
      (highline-face ((t (:background "grey84"))))
