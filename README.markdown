@@ -122,6 +122,12 @@ instructions in its header about how to install them. Usually, the
 config auto-detects the availability, so that it is not necessary to
 set extra variables, or comment/uncomment things.
 
+### Spell correction
+
+_Flyspell_ is used to provide spell correction for text-mode and
+comments in source files. Depending on the system it might be
+necessary to install _aspell_ and _aspell-dict-en_.
+
 ## Emacs Lisp Package Archive
 
 Libraries from [ELPA](http://tromey.com/elpa) are preferred when

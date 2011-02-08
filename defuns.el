@@ -208,7 +208,8 @@ Symbols matching the text at point are put first in the completion list."
   (tool-bar-mode -1))
 
 (defun turn-on-flyspell-comments ()
-  (flyspell-prog-mode))
+  (when (executable-find "aspell")
+    (flyspell-prog-mode)))
 
 (defun add-watchwords ()
   (font-lock-add-keywords
