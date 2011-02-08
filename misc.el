@@ -96,11 +96,12 @@
 (set-default 'indicate-empty-lines t)
 (set-default 'imenu-auto-rescan t)
 
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'text-mode-hook 'turn-on-flyspell)
-
 (defvar coding-hook nil
   "Hook that gets run on activation of any programming mode.")
+
+;; FLYSPELL
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'turn-on-flyspell)
 
 ;; ACK-GREP
 (autoload 'ack-same "full-ack" nil t)
