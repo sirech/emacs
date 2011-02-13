@@ -125,6 +125,25 @@
 ;; Start a regular shell if you prefer that.
 (global-set-key (kbd "C-x M-m") 'shell)
 
+
+;;
+;; FLYSPELL
+;;
+
+(eval-after-load 'flyspell
+  '(progn
+     (define-key flyspell-mode-map (kbd "C-;") 'nil)))
+
+
+;;
+;; PAREDIT
+;;
+
+(eval-after-load 'paredit
+  '(progn
+     (define-key paredit-mode-map (kbd "M-s") 'nil)))
+
+
 ;;
 ;; MISC
 ;;
