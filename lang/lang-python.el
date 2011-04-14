@@ -60,9 +60,6 @@ system"
   (setq ac-auto-start nil))
   ;; (set (make-local-variable 'ac-sources)
   ;;      '(ac-source-rope));;DISABLE YASNIPPET (append ac-sources '(ac-source-rope) '(ac-source-yasnippet)))
-  ;; (set (make-local-variable 'ac-find-function) 'ac-python-find)
-  ;; (set (make-local-variable 'ac-candidate-function) 'ac-python-candidate))
-
 
 ;; Initialization
 
@@ -81,6 +78,7 @@ system"
 
 ;; Rope
 (defun load-rope ()
+  (setq ropemacs-enable-shortcuts nil)
   (pymacs-load "ropemacs" "rope-")
   (setq ropemacs-enable-autoimport t))
 
@@ -95,7 +93,13 @@ system"
      ;;
 
      ;; VS-style compile controls
-     (define-key python-mode-map (kbd "<f7>") 'python-check-command)))
+     (define-key python-mode-map (kbd "<f7>") 'python-check-command)
+     ))
+
+(eval-after-load 'ropemacs
+  '(progn
+     (define-key ropemacs-local-keymap (kbd "M-.") 'rope-goto-definition)
+     ))
 
 (eval-after-load 'flymake
   '(setup-flymake 'pyflakes-is-present "py" 'flymake-pyflakes-init))
@@ -104,67 +108,6 @@ system"
 
 (defun flymake-pyflakes-init ()
   (custom-flymake-init "pyflakes"))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Auto-completion
-;;;  Integrates:
-;;;   1) Rope
-;;;   2) Yasnippet
-;;;   all with AutoComplete.el
-;;; Credit to http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; (defun prefix-list-elements (list prefix)
-;;   (let (value)
-;;     (nreverse
-;;      (dolist (element list value)
-;;        (print (format "%s%s" prefix element))
-;;        (setq value (cons (format "%s%s" prefix element) value))))))
-
-;; (defvar ac-source-rope
-;;   '((candidates
-;;      . (lambda ()
-;;          (prefix-list-elements (rope-completions) ac-target))))
-;;   "Source for Rope")
-
-;; (defun ac-python-find ()
-;;   "Python `ac-find-function'."
-;;   (require 'thingatpt)
-;;   (let ((symbol (car-safe (bounds-of-thing-at-point 'symbol))))
-;;     (if (null symbol)
-;;         (if (string= "." (buffer-substring (- (point) 1) (point)))
-;;             (point)
-;;           nil)
-;;       symbol)))
-
-;; (defun ac-python-candidate ()
-;;   "Python `ac-candidates-function'"
-;;   (let (candidates)
-;;     (dolist (source ac-sources)
-;;       (if (symbolp source)
-;;           (setq source (symbol-value source)))
-;;       (let* ((ac-limit (or (cdr-safe (assq 'limit source)) ac-limit))
-;;              (requires (cdr-safe (assq 'requires source)))
-;;              cand)
-;;         (if (or (null requires)
-;;                 (>= (length ac-target) requires))
-;;             (setq cand
-;;                   (delq nil
-;;                         (mapcar (lambda (candidate)
-;;                                   (propertize candidate 'source source))
-;;                                 (funcall (cdr (assq 'candidates source)))))))
-;;         (if (and (> ac-limit 1)
-;;                  (> (length cand) ac-limit))
-;;             (setcdr (nthcdr (1- ac-limit) cand) nil))
-;;         (setq candidates (append candidates cand))))
-;;     (delete-dups candidates)))
-
-;; (defadvice ac-start (before advice-turn-on-auto-start activate)
-;;   (set (make-local-variable 'ac-auto-start) t))
-;; (defadvice ac-cleanup (after advice-turn-off-auto-start activate)
-;;   (set (make-local-variable 'ac-auto-start) nil))
-
-;;; END AUTOCOMPLETION
 
 (provide 'lang-python)
 ;;; lang-python.el ends here
