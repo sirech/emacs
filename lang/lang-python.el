@@ -6,7 +6,8 @@
 ;;  * for pep8
 ;;   - easy_install pep8
 ;;  * for pymacs
-;;   - goto http://pymacs.progiciels-bpi.ca/
+;;   - goto http://pymacs.progiciels-bpi.ca/ (beta versions don't seem
+;; to work)
 ;;   - download pymacs, untar, run python setup.py install
 ;;   - put pymacs.el in vendor/
 ;;  * for rope
