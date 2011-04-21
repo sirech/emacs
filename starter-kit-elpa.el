@@ -11,6 +11,7 @@
                                    'paredit
                                    'inf-ruby
                                    'rinari
+                                   'rvm
                                    'magit
                                    'htmlize
                                    'gist
