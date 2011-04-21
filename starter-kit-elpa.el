@@ -10,6 +10,7 @@
                                    'css-mode
                                    'paredit
                                    'inf-ruby
+                                   'rinari
                                    'magit
                                    'htmlize
                                    'gist
