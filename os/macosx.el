@@ -43,11 +43,14 @@
 (defun ns-raise-terminal ()
   (ns-switch-to "Terminal"))
 
+(defun ns-raise-iterm ()
+  (ns-switch-to "iTerm"))
+
 (defun ns-raise-chrome ()
   (ns-switch-to "Google Chrome"))
 
 (add-hook 'server-visit-hook 'ns-raise-emacs)
-(add-hook 'server-done-hook 'ns-raise-terminal)
+(add-hook 'server-done-hook 'ns-raise-iterm)
 
 (add-hook 'edit-server-start-hook 'ns-raise-emacs)
 (add-hook 'edit-server-done-hook 'ns-raise-chrome)
