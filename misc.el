@@ -83,6 +83,9 @@
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
+;; Support visual lines
+(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
+
 ;; ido-mode is like magic pixie dust!
 (when (> emacs-major-version 21)
   (ido-mode t)
