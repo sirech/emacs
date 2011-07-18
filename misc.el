@@ -136,6 +136,7 @@
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode))
 (add-to-list 'auto-mode-alist '("\\.csv$" . csv-mode))
+(add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
 
 (autoload 'csv-mode "csv-mode" "Major mode for editing
 comma-separated value files." t)
