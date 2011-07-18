@@ -55,7 +55,7 @@ function and a error line patterns variable."
      ;; Remove extensions without a working config
      (remove-extension-flymake "\\.xml\\'")
      (remove-extension-flymake "\\.html?\\'")
-     (remove-extension-flymake "[0-9]+\\.tex\\'")
+     (remove-extension-flymake "\\.tex\\'")
      ))
 
 (provide 'flymake-config)
