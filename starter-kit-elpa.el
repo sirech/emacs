@@ -8,6 +8,7 @@
                                    'lua-mode
                                    'js2-mode
                                    'css-mode
+                                   'yaml-mode
                                    'paredit
                                    'inf-ruby
                                    'rinari
