@@ -53,6 +53,7 @@
                                         ; on windows.
 (server-start)
 (setq edit-server-new-frame nil)
+(setq edit-server-port 9293)
 (edit-server-start) ;; This one is for the Edit with Emacs Chrome Extension
 
 ;; Start SMEX
