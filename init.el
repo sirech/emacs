@@ -68,6 +68,9 @@
 (package-initialize)
 (require 'starter-kit-elpa)
 
+;; Load up el-get, the package manager
+(require 'el-get-config)
+
 ;; Load up customizations
 (require 'smex)
 (require 'defuns)

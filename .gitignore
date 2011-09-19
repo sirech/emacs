@@ -2,6 +2,7 @@
 .DS_Store
 auto-save-list
 backups
+el-get/*
 elpa/*
 lib/*
 places
