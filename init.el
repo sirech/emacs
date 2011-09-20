@@ -29,7 +29,6 @@
 
 (add-to-loadpath dotfiles-dir)
 (add-to-loadpath (concat dotfiles-dir "lang"))
-(add-to-loadpath (concat dotfiles-dir "elpa-to-submit") t)
 (add-to-loadpath (concat dotfiles-dir "vendor") t)
 
 ;; Sub-Subdirs have to be loaded manually ...
@@ -40,8 +39,6 @@
 (add-to-loadpath-if-exists (concat dotfiles-dir "vendor/jdee/lisp"))
 (add-to-loadpath-if-exists (concat dotfiles-dir "vendor/cedet/common"))
 
-(setq autoload-file (concat dotfiles-dir "loaddefs.el"))
-(setq package-user-dir (concat dotfiles-dir "elpa"))
 (setq custom-file (concat dotfiles-dir "custom.el"))
 
 ;; Library directory where external libraries can be stored
@@ -56,23 +53,12 @@
 (require 'uniquify)
 (require 'ansi-color)
 (require 'recentf)
-(require 'bm)
-(require 'psvn)
 (require 'edit-server)
 
 ;; backport some functionality to Emacs 22 if needed
 (require 'dominating-file)
 
-;; Load up ELPA, the package manager
-(require 'package)
-(package-initialize)
-(require 'starter-kit-elpa)
-
-;; Load up el-get, the package manager
-(require 'el-get-config)
-
 ;; Load up customizations
-(require 'smex)
 (require 'defuns)
 (require 'bindings)
 (require 'server) ; load before misc to avoid problem in windows
@@ -83,7 +69,6 @@
 (require 'ac-config)
 (require 'flymake-config)
 
-(regen-autoloads)
 (load custom-file 'noerror)
 
 ;; You can keep system- or user-specific customizations here
@@ -98,6 +83,9 @@
 (if (file-exists-p user-specific-config) (load user-specific-config))
 (if (file-exists-p user-specific-dir)
     (mapc #'load (directory-files user-specific-dir nil ".*el$")))
+
+;; Load up el-get, the package manager
+(require 'el-get-config)
 
 ;; Load language modes, or modes that might need path adjustments for each machine
 ;; (require 'starter-kit-perl)

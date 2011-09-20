@@ -236,7 +236,6 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'coding-hook 'turn-on-flyspell-comments)
 (add-hook 'coding-hook 'pretty-lambdas)
 (add-hook 'coding-hook 'add-watchwords)
-(add-hook 'coding-hook 'idle-highlight)
 
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."
@@ -303,23 +302,7 @@ Symbols matching the text at point are put first in the completion list."
 (defun recompile-init ()
   "Byte-compile all your dotfiles again."
   (interactive)
-  (byte-recompile-directory dotfiles-dir 0)
-  ;; TODO: remove elpa-to-submit once everything's submitted.
-  (byte-recompile-directory (concat dotfiles-dir "elpa-to-submit/") 0))
-
-(defun regen-autoloads (&optional force-regen)
-  "Regenerate the autoload definitions file if necessary and load it."
-  (interactive "P")
-  (let ((autoload-dir (concat dotfiles-dir "/elpa-to-submit"))
-        (generated-autoload-file autoload-file))
-    (when (or force-regen
-              (not (file-exists-p autoload-file))
-              (some (lambda (f) (file-newer-than-file-p f autoload-file))
-                    (directory-files autoload-dir t "\\.el$")))
-      (message "Updating autoloads...")
-      (let (emacs-lisp-mode-hook)
-        (update-directory-autoloads autoload-dir))))
-  (load autoload-file))
+  (byte-recompile-directory dotfiles-dir 0))
 
 (defun sudo-edit (&optional arg)
   (interactive "p")

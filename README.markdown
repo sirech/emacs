@@ -7,26 +7,6 @@ each OS/Machine.
 This configuration started in Jan 2010, derived from the [Emacs
 Starter Kit](http://github.com/technomancy/emacs-starter-kit/).
 
-# Resources for Emacs
-
-Some interesting places to learn more about emacs:
-
-* [The best Wiki about Emacs](www.emacswiki.org)
-
-* [Tips from Steve
-  Yegge](http://steve.yegge.googlepages.com/effective-emacs)
-
-* [A pretty good Screencast](http://peepcode.com/products/meet-emacs)
-
-* http://www.dotemacs.de/
-
-* http://snarfed.org/space/why%20I%20don't%20run%20shells%20inside%20Emacs
-  
-* [This page is not actively maintained anymore, but still has good
-  stuff](http://emacsblog.org/)
-  
-* [Some more tricks](http://sachachua.com/wp/category/emacs/)
-
 ## Installation
 
 1. Grab GNU Emacs (23.* version!), use apt or another package manager
@@ -45,6 +25,8 @@ necessary; this should be noted in the commit messages.
 3. Map the CAPS key to control. It is very easy to do in Mac OS X and
 Linux, you'll need some registry files for windows.
 
+4. Install el-get as described below.
+
 ## Byte Compiling
 
 This config tries very hard to avoid loading packages or other
@@ -55,11 +37,11 @@ packages. The command to do that is:
 `C-u 0 M-x byte-recompile-directory`
 
 It is a good idea to apply this command to the _vendor_ and
-_elpa-to-submit_ folders. It is not necessary to do so for _elpa_, as
-they are already compiled. __Don't__ apply this to the common
-settings, like _bindings_, _misc_, or the _lang_ folder. If you change
-the .el file, the .elc might get outdated and emacs will be using the
-wrong file.
+_elpa-to-submit_ folders. It is not necessary to do so for
+_el-get-packages_, as they are already compiled. __Don't__ apply this
+to the common settings, like _bindings_, _misc_, or the _lang_
+folder. If you change the .el file, the .elc might get outdated and
+emacs will be using the wrong file.
 
 ## Structure
 
@@ -128,16 +110,23 @@ _Flyspell_ is used to provide spell correction for text-mode and
 comments in source files. Depending on the system it might be
 necessary to install _aspell_ and _aspell-dict-en_.
 
-## Emacs Lisp Package Archive
+## el-get
 
-Libraries from [ELPA](http://tromey.com/elpa) are preferred when
-available since dependencies are handled automatically, and the burden
-to update them is removed from the user. In the long term, ideally
-everything would be installed via ELPA, and only _package.el_ would
-need to be distributed with the starter kit. (Or better yet,
-package.el would come with Emacs...) See _starter-kit-elpa.el_ for a
-list of libraries that are pending submission to ELPA. Packages get
-installed in the _elpa/_ directory.
+It is intended as a replacement of [ELPA](http://tromey.com/elpa). To
+use it, clone it inside the _emacs_ folder with:
+
+`git clone git@github.com:sirech/el-get.git`
+
+Keep in mind that the el-get repository is just a fork, and has to be
+synchronized with the original occasionally.
+
+### Downloading packages
+
+Packages defined in _el-get-config.el_ get downloaded automatically
+inside _el-get-packages_.
+
+It is assumed that a connection to the internet is available. _git_
+and _svn_ are also required and reachable from _emacs_
 
 ## Test
 
@@ -146,21 +135,22 @@ under Linux (Ubuntu), and occasionally under Windows (with help of
 cygwin), for general text editing, and for programming. In case of
 problems, running the last version of everything usually helps.
 
-## Contributing
+# Resources for Emacs
 
-If you know your way around Emacs, please try out the starter kit as a
-replacement for your regular dotfiles for a while. If there's anything
-you just can't live without, add it or let me know so I can add
-it. Take a look at what happens in init.el to get started.
+Some interesting places to learn more about emacs:
 
-Also: see the file TODO. Helping submit new libraries to ELPA is the
-easiest way to help out. There are two ways you can do this: either
-take new libraries and make them ready for ELPA, dropping them in the
-elpa-to-submit directory or take files that are already in
-elpa-to-submit, ensuring all their dependencies are correctly loaded
-into ELPA, and sending them to the ELPA maintainer. There are details
-at http://tromey.com/elpa/upload.html for how ELPA submission
-works. Grep the project for TODO for other things.
+* [The best Wiki about Emacs](www.emacswiki.org)
 
-Files are licensed under the same license as Emacs unless otherwise
-specified. See the file COPYING for details.
+* [Tips from Steve
+  Yegge](http://steve.yegge.googlepages.com/effective-emacs)
+
+* [A pretty good Screencast](http://peepcode.com/products/meet-emacs)
+
+* http://www.dotemacs.de/
+
+* http://snarfed.org/space/why%20I%20don't%20run%20shells%20inside%20Emacs
+  
+* [This page is not actively maintained anymore, but still has good
+  stuff](http://emacsblog.org/)
+  
+* [Some more tricks](http://sachachua.com/wp/category/emacs/)
