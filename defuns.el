@@ -263,21 +263,6 @@ Symbols matching the text at point are put first in the completion list."
     (when file
       (find-file file))))
 
-;; Configuration
-
-;; Path configuration
-(defun add-to-path (&rest lst)
-  "Adds all the given paths to the exec-path and
-  PATH. E.g: (add-to-path \"/usr/local/bin\" \"/usr/bin\")"
-  (dolist (path lst)
-    (add-to-list 'exec-path path)
-    (update-env-var "PATH" path)))
-
-(defun update-env-var (var new-path)
-  "Adds new-path to the given environment
-  variable. E.g: (update-env-var \"PATH\" \"/usr/local/bin\")"
-  (setenv var (concat (getenv var) ":" new-path)))
-
 ;; Cosmetic
 
 (defun pretty-lambdas ()
@@ -385,15 +370,6 @@ result includes a trailing '/' at the end"
 (defun vc-git-annotate-command (file buf &optional rev)
   (let ((name (file-relative-name file)))
     (vc-git-command buf 0 name "blame" "-w" rev)))
-
-(defun get-os ()
-  "Return a unique string depending on which os we are in"
-  (interactive)
-  (cond
-   ((eq system-type 'darwin) "macosx")
-   ((eq system-type 'gnu/linux) "linux")
-   ((eq system-type 'windows-nt) "windows")))
-
 
 (defun remove-from-list (list-var remove-fn)
   "Removes items from the given list. The remove function is used
