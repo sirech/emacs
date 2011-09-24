@@ -38,7 +38,6 @@
 (require 'uniquify)
 (require 'ansi-color)
 (require 'recentf)
-(require 'edit-server)
 
 ;; backport some functionality to Emacs 22 if needed
 (require 'dominating-file)

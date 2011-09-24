@@ -52,9 +52,6 @@
                                         ; ~/.emacs.d/server is unsafe"
                                         ; on windows.
 (server-start)
-(setq edit-server-new-frame nil)
-(setq edit-server-port 9293)
-(edit-server-start) ;; This one is for the Edit with Emacs Chrome Extension
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
