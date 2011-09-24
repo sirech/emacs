@@ -51,7 +51,6 @@ system"
 
 (defun py-activate-ide ()
   (turn-on-flymake 'pyflakes-is-present)
-  (turn-on-autocomplete)
   (when (py-ide-is-present)
     (py-activate-rope)))
 

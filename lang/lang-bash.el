@@ -8,7 +8,6 @@
 ;; Activation
 
 (defun bash-activate-ide ()
-  (turn-on-autocomplete)
   (turn-on-flymake nil))
 
 ;; Initialization

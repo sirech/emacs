@@ -4,7 +4,6 @@
 
 ;; Start hooks
 (add-hook 'nxml-mode-hook 'run-coding-hook)
-(add-hook 'nxml-mode-hook 'turn-on-autocomplete) 
 
 (eval-after-load 'nxml-mode
   '(progn

@@ -38,6 +38,7 @@
 
 (setq packages-other
       '(
+        auto-complete
         gist
         htmlize
         magit

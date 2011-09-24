@@ -43,14 +43,8 @@
 
 (defun ruby-activate-ide ()
   (turn-on-flymake 'ruby-is-present)
-  (ruby-activate-autocomplete)
   (when (ruby-ide-is-present)
     (ruby-activate-rsense)))
-
-(defun ruby-activate-autocomplete ()
-  (require 'auto-complete-config)
-  (turn-on-autocomplete)
-  (ac-ruby-mode-setup))
 
 (defun ruby-activate-rsense ()
   (require 'rsense)

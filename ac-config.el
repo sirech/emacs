@@ -14,11 +14,6 @@
 
 ;; HELPER FUNCTIONS
 
-(defun turn-on-autocomplete ()
-  (interactive)
-  (require 'auto-complete)
-  (auto-complete-mode 1))
-
 (defun activate-yasnippet ()
   (when (yasnippet-is-present)
     (require 'yasnippet)
@@ -37,22 +32,6 @@
      ;; (add-to-list 'hippie-expand-try-functions-list 'yas/hippie-try-expand)
      ;; (setq yas/prompt-functions '(yas/x-prompt yas/dropdown-prompt))
      ))
-
-;; I don't know how to avoid repeating the functions, as the
-;; ac-*-mode-setup functions don't exist until auto-complete-config is
-;; imported, and I'm trying to avoid that
-(defun ac-cc-setup-hook ()
-  (require 'auto-complete-config)
-  (turn-on-autocomplete)
-  (ac-cc-mode-setup))
-
-(defun ac-css-setup-hook ()
-  (require 'auto-complete-config)
-  (turn-on-autocomplete)
-  (ac-css-mode-setup))
-
-(add-hook 'c-mode-common-hook 'ac-cc-setup-hook)
-(add-hook 'css-mode-hook 'ac-css-setup-hook)
 
 (eval-after-load 'auto-complete
   '(progn

@@ -6,7 +6,6 @@
 
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'esk-remove-elc-on-save)
-(add-hook 'emacs-lisp-mode-hook 'lisp-activate-autocomplete)
 
 (dolist (x '(scheme emacs-lisp lisp clojure))
   (when window-system
@@ -17,13 +16,6 @@
    (intern (concat (symbol-name x) "-mode-hook")) 'turn-on-paredit)
   (add-hook
    (intern (concat (symbol-name x) "-mode-hook")) 'run-coding-hook))
-
-;; Activation
-
-(defun lisp-activate-autocomplete ()
-  (require 'auto-complete-config)
-  (turn-on-autocomplete)
-  (ac-emacs-lisp-mode-setup))
 
 ;; Initialization
 
