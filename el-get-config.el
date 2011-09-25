@@ -39,6 +39,7 @@
 (setq packages-other
       '(
         auto-complete
+        color-theme
         gist
         htmlize
         magit
@@ -51,8 +52,6 @@
       '(
         (:name auto-complete
                :after (lambda ()
-                        (require 'pos-tip)
-
                         (global-set-key (kbd "M-s") 'auto-complete)
                         (define-key ac-complete-mode-map "\C-g" 'ac-stop)
                         (define-key ac-complete-mode-map "\r" 'ac-complete)

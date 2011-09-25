@@ -11,10 +11,8 @@
 
 (add-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
-;; Theme
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-jedit-grey)
+;; Color Theme
+(color-theme-sirech)
 
 ;; UTF-8 all the way
 
