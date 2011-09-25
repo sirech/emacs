@@ -122,7 +122,8 @@ Packages defined in _el-get-config.el_ get downloaded automatically
 inside _el-get-packages_.
 
 It is assumed that a connection to the internet is available. _git_
-and _svn_ are also required and have to be reachable from _emacs_
+(>= 1.7) and _svn_ are also required and have to be reachable from
+_emacs_
 
 ## Test
 
