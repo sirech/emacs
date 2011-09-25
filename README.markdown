@@ -17,11 +17,6 @@ GNU](http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-23.1-bin-i386.zip).
 
 2. Link the directory with `ln -s ~/{emacs_dir} ~/.emacs`.
 
-If you find yourself missing some autoloads after an update (which
-should manifest itself as "void function: foobar" errors) try M-x
-regen-autoloads. After some updates an M-x recompile-init will be
-necessary; this should be noted in the commit messages.
-
 3. Map the CAPS key to control. It is very easy to do in Mac OS X and
 Linux, you'll need some registry files for windows.
 
@@ -36,17 +31,18 @@ packages. The command to do that is:
 
 `C-u 0 M-x byte-recompile-directory`
 
-It is a good idea to apply this command to the _vendor_ and
-_elpa-to-submit_ folders. It is not necessary to do so for
-_el-get-packages_, as they are already compiled. __Don't__ apply this
-to the common settings, like _bindings_, _misc_, or the _lang_
-folder. If you change the .el file, the .elc might get outdated and
-emacs will be using the wrong file.
+It is a good idea to apply this command to the _vendor_ folder. It is
+not necessary to do so for _el-get-packages_, as they are already
+compiled. __Don't__ apply this to the common settings, like
+_bindings_, _misc_, or the _lang_ folder. If you change the .el file,
+the .elc might get outdated and emacs will be using the wrong file.
 
 ## Structure
 
 The init.el file is where everything begins. It's the first file to
 get loaded. Other relevant files are:
+
+* helpers.el: Functions and settings used during intialization.
 
 * defuns.el: Some useful functions for editing and configuration.
 
@@ -126,7 +122,7 @@ Packages defined in _el-get-config.el_ get downloaded automatically
 inside _el-get-packages_.
 
 It is assumed that a connection to the internet is available. _git_
-and _svn_ are also required and reachable from _emacs_
+and _svn_ are also required and have to be reachable from _emacs_
 
 ## Test
 
