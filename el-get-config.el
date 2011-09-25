@@ -27,6 +27,7 @@
         ruby-compilation
         ruby-electric
         ruby-mode
+        rspec-mode
         rvm
         ))
 
