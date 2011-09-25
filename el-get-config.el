@@ -15,6 +15,7 @@
         crontab-mode
         css-mode
         csv-mode
+        git-commit
         js2-mode
         lua-mode
         markdown-mode
