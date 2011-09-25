@@ -117,23 +117,7 @@ exec-to-string command, but it works and seems fast"
 ;; Auto Syntax Error highlight, credit to the starter kit from www.peepcode.com
 
 (defun flymake-ruby-init ()
-  (custom-flymake-init "ruby" "-c" "-w"))
-
-;; (add-hook 'ruby-mode-hook
-;;           (lambda ()
-;;             (when (and buffer-file-name
-;;                        (file-writable-p
-;;                         (file-name-directory buffer-file-name))
-;;                        (file-writable-p buffer-file-name)
-;;                        (if (fboundp 'tramp-list-remote-buffers)
-;;                            (not (subsetp
-;;                                  (list (current-buffer))
-;;                                  (tramp-list-remote-buffers)))
-;;                          t))
-;;               (local-set-key (kbd "C-c d")
-;;                              'flymake-display-err-menu-for-current-line)
-;;               (flymake-mode t))))))
-
+  (custom-flymake-init "ruby" "-c" "-W2"))
 
 ;; Rinari (Minor Mode for Ruby On Rails)
 ;; (setq rinari-major-modes

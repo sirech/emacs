@@ -23,7 +23,7 @@ function and a error line patterns variable."
         (add-to-list 'flymake-allowed-file-name-masks
                      (list mask flymake-init)))
       (if line-patterns
-          (set (make-local-variable 'flymake-err-line-patterns) line-patterns)))))
+          (loop for pattern in line-patterns do (push pattern flymake-err-line-patterns))))))
 
 (defun custom-flymake-init (executable &rest extra-args)
   "Initializes flymake with a custom command, accepting also extra arguments for the command"
