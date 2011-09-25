@@ -48,18 +48,11 @@ system"
   (locate-library "pymacs"))
 
 ;; Activation
+(when (py-ide-is-present)
+  (ac-ropemacs-initialize))
 
 (defun py-activate-ide ()
-  (turn-on-flymake 'pyflakes-is-present)
-  (when (py-ide-is-present)
-    (py-activate-rope)))
-
-(defun py-activate-rope ()
-  (require 'auto-complete-config)
-  (add-to-list 'ac-sources 'ac-source-ropemacs)
-  (setq ac-auto-start nil))
-  ;; (set (make-local-variable 'ac-sources)
-  ;;      '(ac-source-rope));;DISABLE YASNIPPET (append ac-sources '(ac-source-rope) '(ac-source-yasnippet)))
+  (turn-on-flymake 'pyflakes-is-present))
 
 ;; Initialization
 
@@ -68,26 +61,8 @@ system"
   '(when (pep8-is-present)
      (setq python-check-command "pep8 --repeat")))
 
-;; Pymacs
-(when (py-ide-is-present)
-  (autoload 'pymacs-apply "pymacs")
-  (autoload 'pymacs-call "pymacs")
-  (autoload 'pymacs-eval "pymacs" nil t)
-  (autoload 'pymacs-exec "pymacs" nil t)
-  (autoload 'pymacs-load "pymacs" nil t))
-
-;; Rope
-(defun load-rope ()
-  (setq ropemacs-enable-shortcuts nil)
-  (pymacs-load "ropemacs" "rope-")
-  (setq ropemacs-enable-autoimport t))
-
 (eval-after-load 'python
   '(progn
-     (when (py-ide-is-present)
-       (load-rope))
-
-
      ;;
      ;; KEYBINDINGS
      ;;
