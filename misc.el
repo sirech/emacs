@@ -146,7 +146,6 @@ comma-separated value files." t)
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
 
-
 ;; Cosmetics
 
 (eval-after-load 'diff-mode

@@ -8,7 +8,8 @@
 (setq el-get-dir (concat dotfiles-dir "el-get-packages"))
 
 
-;; Packages
+;; PACKAGES LIST
+
 (setq packages-modes
       '(
         crontab-mode
@@ -17,7 +18,6 @@
         js2-mode
         lua-mode
         markdown-mode
-        paredit
         yaml-mode))
 
 (setq packages-ruby
@@ -45,7 +45,20 @@
         psvn
         ))
 
-(el-get 'sync packages-modes packages-ruby packages-utilities packages-other)
+;; With initialization
+(setq el-get-sources
+      '(
+        (:name paredit
+               :after (lambda ()
+                        (define-key paredit-mode-map (kbd "M-s") 'nil)))
+        ))
+
+(el-get 'sync
+        packages-modes
+        packages-ruby
+        packages-utilities
+        packages-other
+        (loop for src in el-get-sources collect (el-get-source-name src)))
 
 (provide 'el-get-config)
 ;;; el-get-config.el ends here

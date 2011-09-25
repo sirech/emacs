@@ -136,15 +136,6 @@
 
 
 ;;
-;; PAREDIT
-;;
-
-(eval-after-load 'paredit
-  '(progn
-     (define-key paredit-mode-map (kbd "M-s") 'nil)))
-
-
-;;
 ;; MISC
 ;;
 
