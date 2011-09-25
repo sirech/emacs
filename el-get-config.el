@@ -31,10 +31,10 @@
         ))
 
 (setq packages-utilities
-     '(
-       full-ack
-       smex
-       ))
+      '(
+        full-ack
+        smex
+        ))
 
 (setq packages-other
       '(
@@ -43,11 +43,30 @@
         htmlize
         magit
         psvn
+        pos-tip
         ))
 
 ;; With initialization
 (setq el-get-sources
       '(
+        (:name auto-complete
+               :after (lambda ()
+                        (require 'pos-tip)
+
+                        (global-set-key (kbd "M-s") 'auto-complete)
+                        (define-key ac-complete-mode-map "\C-g" 'ac-stop)
+                        (define-key ac-complete-mode-map "\r" 'ac-complete)
+                        (define-key ac-menu-map "\C-n" 'ac-next)
+                        (define-key ac-menu-map "\C-p" 'ac-previous)
+
+                        (setq ac-comphist-file (expand-file-name "~/.ac-comphist"))
+                        (set-face-background 'ac-candidate-face "white")
+                        (setq ac-override-local-map t)
+                        (setq ac-use-menu-map t)
+                        (setq ac-ignore-case t)
+                        (setq ac-menu-height 10)
+                        (setq ac-dwim nil)))
+
         (:name paredit
                :after (lambda ()
                         (define-key paredit-mode-map (kbd "M-s") 'nil)))

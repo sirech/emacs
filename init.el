@@ -53,7 +53,6 @@
 (require 'registers)
 (require 'eshell-utils)
 (require 'shell-utils)
-(require 'ac-config)
 (require 'flymake-config)
 
 (load custom-file 'noerror)
