@@ -9,6 +9,12 @@
 ;;   - create config file with 'ruby etc/config.rb > ~/.rsense' (must be IN RSENSE_HOME)
 ;;   - copy the rsense.el file in /etc to the /vendor directory in emacs
 ;;
+;;  * ruby:
+;;   - rvm is problematic for flymake because JRuby doesn't work with
+;;   it. Therefore is best to use a globally installed ruby, which
+;;   should be found by the ruby-binary variable (the looked paths
+;;   might need adjustment).
+;;
 ;; NOTE: As of today (11/2010), it is not possible to use RSense with JRuby
 
 ;; Set hooks
@@ -21,7 +27,7 @@
 
 (defun ruby-is-present ()
   "Determines whether ruby is installed in the system"
-  (executable-find "ruby"))
+  ruby-binary)
 
 (defun ruby-ide-is-present ()
   "Determines if the IDE can be run"
@@ -57,6 +63,12 @@
   (add-to-list 'ac-sources 'ac-source-rsense-method))
 
 ;; Initialization
+
+(defvar ruby-binary
+  (cond
+   ((executable-find "/usr/bin/ruby") "/usr/bin/ruby")
+   (t nil))
+  "The ruby binary (not JRuby!)")
 
 (eval-after-load 'ruby-mode
   '(progn
@@ -117,7 +129,7 @@ exec-to-string command, but it works and seems fast"
 ;; Auto Syntax Error highlight, credit to the starter kit from www.peepcode.com
 
 (defun flymake-ruby-init ()
-  (custom-flymake-init "ruby" "-c" "-W2"))
+  (custom-flymake-init ruby-binary "-c" "-W2"))
 
 ;; Rinari (Minor Mode for Ruby On Rails)
 ;; (setq rinari-major-modes
