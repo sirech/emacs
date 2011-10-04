@@ -13,4 +13,5 @@ vendor/emacs-eclim
 vendor/emacs-w3m
 vendor/pymacs.el
 vendor/rsense.el
+vendor/rcodetools.el
 vendor/yasnippet

@@ -41,6 +41,7 @@
 (setq packages-other
       '(
         auto-complete
+        auto-complete-ruby
         color-theme
         gist
         htmlize
