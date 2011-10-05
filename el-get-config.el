@@ -30,6 +30,7 @@
         ruby-mode
         rspec-mode
         rvm
+        yari
         ))
 
 (setq packages-utilities
@@ -72,6 +73,10 @@
         (:name paredit
                :after (lambda ()
                         (define-key paredit-mode-map (kbd "M-s") 'nil)))
+
+        (:name yari
+               :after (lambda ()
+                        (define-key ruby-mode-map [f1] 'yari)))
         ))
 
 (el-get 'sync
