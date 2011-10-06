@@ -76,7 +76,8 @@
 
         (:name yari
                :after (lambda ()
-                        (define-key ruby-mode-map [f1] 'yari)))
+			(eval-after-load 'ruby-mode
+			  '(define-key ruby-mode-map [f1] 'yari))))
         ))
 
 (el-get 'sync
