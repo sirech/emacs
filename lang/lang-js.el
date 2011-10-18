@@ -27,11 +27,9 @@
 (add-hook 'espresso-mode-hook 'run-coding-hook)
 (add-hook 'espresso-mode-hook 'moz-minor-mode)
 (add-hook 'espresso-mode-hook 'esk-paredit-nonlisp)
-(add-hook 'espresso-mode-hook 'js-activate-ide)
 
 (add-hook 'js2-mode-hook 'run-coding-hook)
 (add-hook 'js2-mode-hook 'moz-minor-mode)
-(add-hook 'js2-mode-hook 'js-activate-ide)
 
 ;; Check availability
 
@@ -41,10 +39,6 @@
 (defun jslint-is-present ()
   "Determines if jslint is present in the system"
   (file-exists-p jslint-location))
-
-;; Activation
-(defun js-activate-ide ()
-  (turn-on-autocomplete))
 
 ;; Initialization
 

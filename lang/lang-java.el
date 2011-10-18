@@ -64,11 +64,7 @@
 ;; Activation
 
 (defun jde-activate-ide ()
-  (turn-on-flymake 'ecj-is-present)
-  (turn-on-autocomplete))  
-  ;; (when (jde-ide-is-present)
-  ;;   (jde-activate-autocomplete)))
-
+  (turn-on-flymake 'ecj-is-present))  
 
 ;; (defun jde-activate-autocomplete ()
 ;;   (add-to-list 'ac-sources 'ac-source-jde))

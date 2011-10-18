@@ -11,10 +11,8 @@
 
 (add-hook 'before-make-frame-hook 'turn-off-tool-bar)
 
-;; Theme
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-jedit-grey)
+;; Color Theme
+(color-theme-sirech)
 
 ;; UTF-8 all the way
 
@@ -52,12 +50,6 @@
                                         ; ~/.emacs.d/server is unsafe"
                                         ; on windows.
 (server-start)
-(setq edit-server-new-frame nil)
-(setq edit-server-port 9293)
-(edit-server-start) ;; This one is for the Edit with Emacs Chrome Extension
-
-;; Start SMEX
-(smex-initialize)
 
 (add-to-list 'safe-local-variable-values '(lexical-binding . t))
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
@@ -107,12 +99,6 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 
-;; ACK-GREP
-(autoload 'ack-same "full-ack" nil t)
-(autoload 'ack "full-ack" nil t)
-(autoload 'ack-find-same-file "full-ack" nil t)
-(autoload 'ack-find-file "full-ack" nil t)
-
 ;; ALIAS
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'qrr 'query-replace-regexp)
@@ -135,9 +121,9 @@
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode))
 (add-to-list 'auto-mode-alist '("\\.csv$" . csv-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
+(add-to-list 'auto-mode-alist '("cron\\(tab\\)?\\."    . crontab-mode))
 
 (autoload 'csv-mode "csv-mode" "Major mode for editing
 comma-separated value files." t)
@@ -157,28 +143,6 @@ comma-separated value files." t)
         try-expand-dabbrev-from-kill
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
-
-;; BOOKMARKS
-(setq bm-restore-repository-on-load t)
-
-;; make bookmarks persistent as default
-(setq-default bm-buffer-persistence t)
-
-;; Loading the repository from file when on start up.
-(add-hook' after-init-hook 'bm-repository-load)
-
-;; Restoring bookmarks when on file find.
-(add-hook 'find-file-hooks 'bm-buffer-restore)
-
-;; Saving bookmark data on killing a buffer
-(add-hook 'kill-buffer-hook 'bm-buffer-save)
-
-;; Saving the repository to file when on exit.
-;; kill-buffer-hook is not called when emacs is killed, so we
-;; must save all bookmarks first.
-(add-hook 'kill-emacs-hook '(lambda nil
-                              (bm-buffer-save-all)
-                              (bm-repository-save)))
 
 ;; Cosmetics
 

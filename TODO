@@ -7,3 +7,11 @@
 - new version of js2-mode?
 - artist mode
 - search across files (IBuffer ?)
+
+Modes to try:
+
+- edit server: remove from vendor, configure after init
+- pymacs: remove from vendor
+- auto-dictionary: slow?
+- auto-complete: based on auto-complete-config, a lot of customization of my own
+ - for ruby: rcodetools plus auto-complete-ruby

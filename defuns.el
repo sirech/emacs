@@ -236,7 +236,6 @@ Symbols matching the text at point are put first in the completion list."
 (add-hook 'coding-hook 'turn-on-flyspell-comments)
 (add-hook 'coding-hook 'pretty-lambdas)
 (add-hook 'coding-hook 'add-watchwords)
-(add-hook 'coding-hook 'idle-highlight)
 
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."
@@ -264,21 +263,6 @@ Symbols matching the text at point are put first in the completion list."
     (when file
       (find-file file))))
 
-;; Configuration
-
-;; Path configuration
-(defun add-to-path (&rest lst)
-  "Adds all the given paths to the exec-path and
-  PATH. E.g: (add-to-path \"/usr/local/bin\" \"/usr/bin\")"
-  (dolist (path lst)
-    (add-to-list 'exec-path path)
-    (update-env-var "PATH" path)))
-
-(defun update-env-var (var new-path)
-  "Adds new-path to the given environment
-  variable. E.g: (update-env-var \"PATH\" \"/usr/local/bin\")"
-  (setenv var (concat (getenv var) ":" new-path)))
-
 ;; Cosmetic
 
 (defun pretty-lambdas ()
@@ -303,23 +287,7 @@ Symbols matching the text at point are put first in the completion list."
 (defun recompile-init ()
   "Byte-compile all your dotfiles again."
   (interactive)
-  (byte-recompile-directory dotfiles-dir 0)
-  ;; TODO: remove elpa-to-submit once everything's submitted.
-  (byte-recompile-directory (concat dotfiles-dir "elpa-to-submit/") 0))
-
-(defun regen-autoloads (&optional force-regen)
-  "Regenerate the autoload definitions file if necessary and load it."
-  (interactive "P")
-  (let ((autoload-dir (concat dotfiles-dir "/elpa-to-submit"))
-        (generated-autoload-file autoload-file))
-    (when (or force-regen
-              (not (file-exists-p autoload-file))
-              (some (lambda (f) (file-newer-than-file-p f autoload-file))
-                    (directory-files autoload-dir t "\\.el$")))
-      (message "Updating autoloads...")
-      (let (emacs-lisp-mode-hook)
-        (update-directory-autoloads autoload-dir))))
-  (load autoload-file))
+  (byte-recompile-directory dotfiles-dir 0))
 
 (defun sudo-edit (&optional arg)
   (interactive "p")
@@ -402,15 +370,6 @@ result includes a trailing '/' at the end"
 (defun vc-git-annotate-command (file buf &optional rev)
   (let ((name (file-relative-name file)))
     (vc-git-command buf 0 name "blame" "-w" rev)))
-
-(defun get-os ()
-  "Return a unique string depending on which os we are in"
-  (interactive)
-  (cond
-   ((eq system-type 'darwin) "macosx")
-   ((eq system-type 'gnu/linux) "linux")
-   ((eq system-type 'windows-nt) "windows")))
-
 
 (defun remove-from-list (list-var remove-fn)
   "Removes items from the given list. The remove function is used
