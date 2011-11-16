@@ -16,6 +16,7 @@
         css-mode
         csv-mode
         git-commit-mode
+        haskell-mode
         js2-mode
         lua-mode
         markdown-mode
