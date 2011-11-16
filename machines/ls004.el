@@ -7,6 +7,8 @@
 
 ;; Export env variables
 (setenv "RSENSE_HOME" "/opt/rsense")
+(setenv "GIT_PROXY_COMMAND" "git-proxy-cmd")
+(setenv "PROXY_HOST" "10.0.175.40")
 
 ;; Use inconsolata font
 (set-face-attribute 'default nil :family "Inconsolata" :height 120)

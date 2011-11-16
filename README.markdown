@@ -125,6 +125,30 @@ It is assumed that a connection to the internet is available. _git_
 (>= 1.7) and _svn_ are also required and have to be reachable from
 _emacs_
 
+### Proxies
+
+If you are behind a proxy, _git_ might not work. To solve this,
+depending on the protocol used:
+
+* http: Set your proxy via
+
+    (setq url-using-proxy t)
+    (setq url-proxy-services
+      '(("http" . (concat host ":" port))))
+
+* git: You need to define the environment variable
+  _GIT_PROXY_COMMAND_, and set it to a script that does the
+  redirecting
+  
+    (setenv "GIT_PROXY_COMMAND" "git-proxy-cmd")
+    
+Where the command can be something like:
+
+    nc -x$PROXY_HOST:1080 -X5 $*
+    
+The command has to be in a directory added to the _PATH_ in emacs
+(like `~/bin`).
+
 ## Test
 
 This configuration is used almost daily under Mac OS X, frequently

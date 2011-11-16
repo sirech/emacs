@@ -25,8 +25,9 @@ non-nil, the subdirectories are also added to the path"
   "Adds all the given paths to the exec-path and
   PATH. E.g: (add-to-path \"/usr/local/bin\" \"/usr/bin\")"
   (dolist (path lst)
-    (add-to-list 'exec-path path)
-    (update-env-var "PATH" path)))
+    (let ( (full-path (expand-file-name path)))
+      (add-to-list 'exec-path path)
+      (update-env-var "PATH" path))))
 
 (defun update-env-var (var new-path)
   "Adds new-path to the given environment
@@ -47,7 +48,7 @@ non-nil, the subdirectories are also added to the path"
 ;; SETTINGS
 
 ;; Fix path
-(add-to-path "/usr/local/bin" "/opt/local/bin")
+(add-to-path "/usr/local/bin" "/opt/local/bin" "~/bin")
 
 (provide 'helpers)
 ;;; helpers.el ends here
