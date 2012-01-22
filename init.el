@@ -51,6 +51,7 @@
 (require 'server) ; load before misc to avoid problem in windows
 (require 'theme)
 (require 'mode-line)
+(require 'ibuffer-config)
 (require 'misc)
 (require 'registers)
 (require 'eshell-utils)
