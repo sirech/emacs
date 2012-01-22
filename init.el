@@ -50,6 +50,7 @@
 (require 'bindings)
 (require 'server) ; load before misc to avoid problem in windows
 (require 'theme)
+(require 'mode-line)
 (require 'misc)
 (require 'registers)
 (require 'eshell-utils)
