@@ -51,7 +51,7 @@
 ;;      (setq yas/trigger-key (kbd "M-SPC"))))
 
 ;; Jump to a definition in the current file. (This is awesome.)
-(global-set-key (kbd "C-x C-i") 'ido-imenu)
+(global-set-key (kbd "C-o") 'ido-imenu)
 
 ;; Yank current word into isearch
 (define-key isearch-mode-map (kbd "C-x") 'isearch-yank-current-word)
