@@ -45,6 +45,7 @@
         auto-complete
         auto-complete-ruby
         color-theme
+        fringe-helper
         gist
         htmlize
         ibuffer-vc
