@@ -51,6 +51,7 @@
       '(
         auto-complete
         auto-complete-ruby
+        browse-kill-ring
         color-theme
         fringe-helper
         htmlize
@@ -77,6 +78,10 @@
                         (setq ac-ignore-case t)
                         (setq ac-menu-height 10)
                         (setq ac-dwim nil)))
+
+        (:name browse-kill-ring
+               :after (lambda ()
+                        (browse-kill-ring-default-keybindings)))
 
         (:name paredit
                :after (lambda ()
