@@ -52,6 +52,7 @@
 (require 'theme)
 (require 'mode-line-config)
 (require 'ibuffer-config)
+(require 'git-config)
 (require 'misc)
 (require 'registers)
 (require 'eshell-utils)

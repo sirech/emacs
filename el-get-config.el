@@ -15,12 +15,19 @@
         crontab-mode
         css-mode
         csv-mode
-        git-commit-mode
         haskell-mode
         js2-mode
         lua-mode
         markdown-mode
         yaml-mode))
+
+(setq packages-git
+      '(
+        git-commit-mode
+        gist
+        magit
+        git-blame-mode
+        ))
 
 (setq packages-ruby
       '(
@@ -46,10 +53,8 @@
         auto-complete-ruby
         color-theme
         fringe-helper
-        gist
         htmlize
         ibuffer-vc
-        magit
         psvn
         pos-tip
         ))
@@ -79,8 +84,8 @@
 
         (:name yari
                :after (lambda ()
-			(eval-after-load 'ruby-mode
-			  '(define-key ruby-mode-map [f1] 'yari))))
+                        (eval-after-load 'ruby-mode
+                          '(define-key ruby-mode-map [f1] 'yari))))
         ))
 
 (el-get 'sync
