@@ -2,30 +2,43 @@
 ;;
 
 (require 'ibuffer)
+(require 'ibuffer-vc)
 
 ;; Custom groups for the buffers
-(setq ibuffer-saved-filter-groups
-      (quote (("default"
-               ("Python"
-                (mode . python-mode))
-               ("Ruby"
-                (mode . ruby-mode))
-               ("Shell Scripting"
-                (or
-                 (mode . shell-script-mode)
-                 (mode . sh-mode)
-                 ))
-               ("XML"
-                (mode . nxml-mode))
-               ("Emacs Configuration"
-                (mode . emacs-lisp-mode))
-               ("*Buffer*"
-                (name . "^\\*.*\\*$"))
-               ))))
+;; (setq ibuffer-saved-filter-groups
+;;       (quote (("default"
+;;                ("Python"
+;;                 (mode . python-mode))
+;;                ("Ruby"
+;;                 (mode . ruby-mode))
+;;                ("Shell Scripting"
+;;                 (or
+;;                  (mode . shell-script-mode)
+;;                  (mode . sh-mode)
+;;                  ))
+;;                ("XML"
+;;                 (mode . nxml-mode))
+;;                ("Emacs Configuration"
+;;                 (mode . emacs-lisp-mode))
+;;                ("*Buffer*"
+;;                 (name . "^\\*.*\\*$"))
+;;                ))))
 
-(add-hook 'ibuffer-mode-hook
+;; ;; Add ibuffer-vc grouping to the list of buffers
+;; (defun ibuffer-vc-add-vc-filter-groups ()
+;;   (interactive)
+;;   (dolist (group (ibuffer-vc-generate-filter-groups-by-vc-root))
+;;     (add-to-list 'ibuffer-filter-groups group t)))
+
+;; (add-hook 'ibuffer-mode-hook
+;;           (lambda ()
+;;             (ibuffer-switch-to-saved-filter-groups "default")
+;;             (ibuffer-vc-add-vc-filter-groups)))
+
+(add-hook 'ibuffer-hook
           (lambda ()
-            (ibuffer-switch-to-saved-filter-groups "default")))
+            (ibuffer-vc-set-filter-groups-by-vc-root)
+            (ibuffer-do-sort-by-alphabetic)))
 
 ;; Use human readable Size column instead of original one
 (define-ibuffer-column size-h
@@ -40,9 +53,12 @@
       '((mark modified read-only " "
               (name 18 18 :left :elide)
               " "
+              ;; Readable size
               (size-h 9 -1 :right)
               " "
               (mode 16 16 :left :elide)
+              " "
+              (vc-status 16 16 :left)
               " "
               filename-and-process)))
 

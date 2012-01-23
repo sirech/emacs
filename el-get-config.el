@@ -47,6 +47,7 @@
         color-theme
         gist
         htmlize
+        ibuffer-vc
         magit
         psvn
         pos-tip
