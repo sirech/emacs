@@ -50,7 +50,7 @@
 (require 'bindings)
 (require 'server) ; load before misc to avoid problem in windows
 (require 'theme)
-(require 'mode-line)
+(require 'mode-line-config)
 (require 'ibuffer-config)
 (require 'misc)
 (require 'registers)

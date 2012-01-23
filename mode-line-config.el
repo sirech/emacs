@@ -1,4 +1,4 @@
-;;; mode-line.el --- The configuration for the mode line
+;;; mode-line-config.el --- The configuration for the mode line
 (setq-default mode-line-format
       (list
        ;; the buffer name; the file name as a tool tip
@@ -48,4 +48,4 @@
        "%-" ;; fill with '-'
        ))
 
-(provide 'mode-line)
+(provide 'mode-line-config)
