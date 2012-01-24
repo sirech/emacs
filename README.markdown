@@ -31,11 +31,11 @@ packages. The command to do that is:
 
 `C-u 0 M-x byte-recompile-directory`
 
-It is a good idea to apply this command to the _vendor_ folder. It is
-not necessary to do so for _el-get-packages_, as they are already
-compiled. __Don't__ apply this to the common settings, like
-_bindings_, _misc_, or the _lang_ folder. If you change the .el file,
-the .elc might get outdated and emacs will be using the wrong file.
+The _vendor_ folder is automatically compiled at start time, as well
+as _el-get-packages_, as they are already compiled. __Don't__ apply
+this to the common settings, like _bindings_, _misc_, or the _lang_
+folder. If you change the .el file, the .elc might get outdated and
+emacs will be using the wrong file.
 
 ## Structure
 

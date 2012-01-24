@@ -23,6 +23,7 @@
 (add-to-loadpath dotfiles-dir)
 (add-to-loadpath (concat dotfiles-dir "lang"))
 (add-to-loadpath (concat dotfiles-dir "vendor") t)
+(byte-recompile-directory (concat dotfiles-dir "vendor") 0)
 
 (setq custom-file (concat dotfiles-dir "custom.el"))
 
