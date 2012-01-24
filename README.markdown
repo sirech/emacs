@@ -57,20 +57,21 @@ get loaded. Other relevant files are:
 * (e)shell-utils.el: Settings to use shells inside emacs. Not very
   much used as I've been using the shell directly.
 
-* ac-config.el: Settings for the auto complete mode, which is very
-  useful for most programming modes.
+### Configuration for specific packages
+
+* desktop-config.el: Automatically save/restore the session when
+  restarting emacs.
 
 * flymake-config.el: Helpers and settings to use flymake for syntax
   error highlighting.
 
-* w3m-config: Configuration to use the _w3m_ browser inside emacs.
+* git-config.el: Git related configuration.
 
-Files that are pending submission to ELPA are bundled with the starter
-kit under the directory elpa-to-submit/. The understanding is that
-these are bundled just because nobody's gotten around to turning them
-into packages, and the bundling of them is temporary. For these
-libraries, autoloads will be generated and kept in the loaddefs.el
-file. This allows them to be loaded on demand rather than at startup.
+* ibuffer-config.el: Customize the ibuffer window.
+
+* mode-line-config.el: Customize the status bar.
+
+* w3m-config: Configuration to use the _w3m_ browser inside emacs.
 
 ## User/Machine/OS Specific settings
 
