@@ -1,5 +1,6 @@
 *.elc
 .DS_Store
+.emacs.desktop*
 auto-save-list
 backups
 el-get/*

@@ -86,4 +86,5 @@
 (require 'lang-bash)
 (require 'w3m-config)
 
+(require 'desktop-config)
 ;;; init.el ends here
