@@ -97,6 +97,7 @@
 
         (:name git-commit-mode
                :after (lambda ()
+                        (add-hook 'git-commit-mode-hook 'run-coding-hook)
                         (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))))
 
         (:name paredit
