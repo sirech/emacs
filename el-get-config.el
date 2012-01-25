@@ -101,7 +101,8 @@
 
         (:name paredit
                :after (lambda ()
-                        (define-key paredit-mode-map (kbd "M-s") 'nil)))
+                        (define-key paredit-mode-map (kbd "M-s") 'nil)
+                        (define-key paredit-mode-map (kbd "M-r") 'nil)))
 
         (:name yari
                :after (lambda ()
