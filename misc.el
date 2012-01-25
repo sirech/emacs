@@ -39,7 +39,8 @@
       ediff-window-setup-function 'ediff-setup-windows-plain
       oddmuse-directory (concat dotfiles-dir "oddmuse")
       xterm-mouse-mode t
-      save-place-file (concat dotfiles-dir "places"))
+      save-place-file (concat dotfiles-dir "places")
+      dired-listing-switches "-alh")
 
 ;; Enable useful commands
 (put 'narrow-to-region 'disabled nil)

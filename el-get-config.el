@@ -53,6 +53,8 @@
         auto-complete-ruby
         browse-kill-ring
         color-theme
+        dired+
+        dired-single
         fringe-helper
         htmlize
         ibuffer-vc
@@ -82,6 +84,17 @@
         (:name browse-kill-ring
                :after (lambda ()
                         (browse-kill-ring-default-keybindings)))
+
+        (:name dired-single
+               :after (lambda ()
+                        (eval-after-load 'dired
+                          '(progn
+                             (define-key dired-mode-map [return] 'joc-dired-single-buffer)
+                             (define-key dired-mode-map [mouse-1] 'joc-dired-single-buffer-mouse)
+                             (define-key dired-mode-map "^"
+                               '(lambda ()
+                                  (interactive)
+                                  (joc-dired-single-buffer "..")))))))
 
         (:name paredit
                :after (lambda ()
