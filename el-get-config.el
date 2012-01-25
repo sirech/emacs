@@ -26,7 +26,7 @@
         git-commit-mode
         gist
         magit
-        git-blame
+        mo-git-blame
         ))
 
 (setq packages-ruby
@@ -108,6 +108,7 @@
 (el-get 'sync
         packages-modes
         packages-ruby
+        packages-git
         packages-utilities
         packages-other
         (loop for src in el-get-sources collect (el-get-source-name src)))
