@@ -32,7 +32,6 @@
 (setq packages-ruby
       '(
         inf-ruby
-        rinari
         ruby-compilation
         ruby-electric
         ruby-mode
