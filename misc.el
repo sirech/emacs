@@ -119,7 +119,6 @@
 
 ;; Associate modes with file extensions (some modes are associated in the specific lang-* files)
 
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG$" . diff-mode))
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.ya?ml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.csv$" . csv-mode))

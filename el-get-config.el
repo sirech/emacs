@@ -95,6 +95,10 @@
                                   (interactive)
                                   (joc-dired-single-buffer "..")))))))
 
+        (:name git-commit-mode
+               :after (lambda ()
+                        (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))))
+
         (:name paredit
                :after (lambda ()
                         (define-key paredit-mode-map (kbd "M-s") 'nil)))
