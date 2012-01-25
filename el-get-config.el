@@ -26,7 +26,7 @@
         git-commit-mode
         gist
         magit
-        git-blame-mode
+        git-blame
         ))
 
 (setq packages-ruby
