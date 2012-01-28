@@ -2,15 +2,6 @@
 ;;
 ;; Part of the Emacs Starter Kit
 
-(when window-system
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (tooltip-mode -1)
-  (mouse-wheel-mode t)
-  (blink-cursor-mode -1)
-  (column-number-mode 't))
-
-(add-hook 'before-make-frame-hook 'turn-off-tool-bar)
-
 ;; Color Theme
 (color-theme-sirech)
 
@@ -22,16 +13,11 @@
 (set-clipboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(setq visible-bell t
-      echo-keystrokes 0.1
-      font-lock-maximum-decoration t
-      inhibit-startup-message t
+(setq echo-keystrokes 0.1
       transient-mark-mode t
-      color-theme-is-global t
       shift-select-mode nil
       mouse-yank-at-point t
       require-final-newline t
-      truncate-partial-width-windows nil
       uniquify-buffer-name-style 'forward
       whitespace-style '(trailing lines space-before-tab
                                   indentation space-after-tab)
@@ -75,12 +61,6 @@
 
 ;; Save a list of recent files visited.
 (recentf-mode 1)
-
-;; Highlight matching parentheses when the point is on them.
-(show-paren-mode 1)
-
-;; Support visual lines
-(add-hook 'text-mode-hook 'turn-on-visual-line-mode)
 
 ;; ido-mode is like magic pixie dust!
 (when (> emacs-major-version 21)
@@ -145,18 +125,6 @@ comma-separated value files." t)
         try-expand-dabbrev-from-kill
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
-
-;; Cosmetics
-
-(eval-after-load 'diff-mode
-  '(progn
-     (set-face-foreground 'diff-added "green4")
-     (set-face-foreground 'diff-removed "red3")))
-
-(eval-after-load 'mumamo
-  '(eval-after-load 'zenburn
-     '(ignore-errors (set-face-background
-                      'mumamo-background-chunk-submode "gray22"))))
 
 ;; Platform-specific stuff
 (when (eq system-type 'darwin)

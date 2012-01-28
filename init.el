@@ -58,6 +58,7 @@
 (require 'mode-line-config)
 (require 'ibuffer-config)
 (require 'git-config)
+(require 'appearance)
 (require 'misc)
 (require 'registers)
 (require 'eshell-utils)
