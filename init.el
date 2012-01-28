@@ -47,7 +47,11 @@
 (require 'el-get-config)
 
 ;; Load up customizations
-(require 'defuns)
+;; Functions (load all files in defuns-dir)
+(setq defuns-dir (expand-file-name "defuns" dotfiles-dir))
+(dolist (file (directory-files defuns-dir t "\\w+"))
+  (when (file-regular-p file)
+    (load file)))
 (require 'bindings)
 (require 'server) ; load before misc to avoid problem in windows
 (require 'theme)
