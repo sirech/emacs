@@ -57,6 +57,7 @@
         fringe-helper
         htmlize
         ibuffer-vc
+        mark-multiple
         psvn
         pos-tip
         ))
@@ -99,6 +100,15 @@
                :after (lambda ()
                         (add-hook 'git-commit-mode-hook 'run-coding-hook)
                         (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))))
+
+        (:name mark-multiple               
+               :after (lambda ()
+                        (require 'inline-string-rectangle)
+                        (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+
+                        (require 'mark-more-like-this)
+                        (global-set-key (kbd "C-<") 'mark-previous-like-this)
+                        (global-set-key (kbd "C->") 'mark-next-like-this)))
 
         (:name paredit
                :after (lambda ()
