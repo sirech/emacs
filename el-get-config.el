@@ -66,7 +66,7 @@
 (setq el-get-sources
       '(
         (:name auto-complete
-               :after (lambda ()
+               :after (progn
                         (global-set-key (kbd "M-s") 'auto-complete)
                         (define-key ac-complete-mode-map "\C-g" 'ac-stop)
                         (define-key ac-complete-mode-map "\r" 'ac-complete)
@@ -82,27 +82,27 @@
                         (setq ac-dwim nil)))
 
         (:name browse-kill-ring
-               :after (lambda ()
+               :after (progn
                         (browse-kill-ring-default-keybindings)))
 
         (:name dired-single
-               :after (lambda ()
+               :after (progn
                         (eval-after-load 'dired
                           '(progn
                              (define-key dired-mode-map [return] 'joc-dired-single-buffer)
                              (define-key dired-mode-map [mouse-1] 'joc-dired-single-buffer-mouse)
                              (define-key dired-mode-map "^"
-                               '(lambda ()
+                               '(progn
                                   (interactive)
                                   (joc-dired-single-buffer "..")))))))
 
         (:name git-commit-mode
-               :after (lambda ()
+               :after (progn
                         (add-hook 'git-commit-mode-hook 'run-coding-hook)
                         (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . git-commit-mode))))
 
-        (:name mark-multiple               
-               :after (lambda ()
+        (:name mark-multiple
+               :after (progn
                         (require 'inline-string-rectangle)
                         (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
 
@@ -111,12 +111,12 @@
                         (global-set-key (kbd "C->") 'mark-next-like-this)))
 
         (:name paredit
-               :after (lambda ()
+               :after (progn
                         (define-key paredit-mode-map (kbd "M-s") 'nil)
                         (define-key paredit-mode-map (kbd "M-r") 'nil)))
 
         (:name yari
-               :after (lambda ()
+               :after (progn
                         (eval-after-load 'ruby-mode
                           '(define-key ruby-mode-map [f1] 'yari))))
         ))
