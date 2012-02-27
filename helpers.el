@@ -26,8 +26,8 @@ non-nil, the subdirectories are also added to the path"
   PATH. E.g: (add-to-path \"/usr/local/bin\" \"/usr/bin\")"
   (dolist (path lst)
     (let ( (full-path (expand-file-name path)))
-      (add-to-list 'exec-path path)
-      (update-env-var "PATH" path))))
+      (add-to-list 'exec-path full-path)
+      (update-env-var "PATH" full-path))))
 
 (defun update-env-var (var new-path)
   "Adds new-path to the given environment
