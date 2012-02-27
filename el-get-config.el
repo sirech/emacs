@@ -6,7 +6,7 @@
 
 (require 'el-get)
 (setq el-get-dir (concat dotfiles-dir "el-get-packages"))
-
+(setq el-get-verbose t)
 
 ;; PACKAGES LIST
 

@@ -35,6 +35,18 @@ non-nil, the subdirectories are also added to the path"
   (setenv var (concat (getenv var) ":" new-path)))
 
 
+;; Simulate try/catch, credit to https://curiousprogrammer.wordpress.com/2009/06/08/error-handling-in-emacs-lisp/
+(defmacro safe-wrap (fn &rest clean-up)
+  `(unwind-protect
+       (let (retval)
+         (condition-case ex
+             (setq retval (progn ,fn))
+           ('error
+            (message (format "Caught exception: [%s]" ex))
+            (setq retval (cons 'exception (list ex)))))
+         retval)
+     ,@clean-up))
+
 ;; OS
 (defun get-os ()
   "Return a unique string depending on which os we are in"
