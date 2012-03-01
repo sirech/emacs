@@ -82,6 +82,7 @@
 
 ;; Load language modes, or modes that might need path adjustments for each machine
 ;; (require 'starter-kit-perl)
+;; TODO: load automatically every file in the directory
 (require 'lang-lisp)
 (require 'lang-js)
 (require 'lang-python)
@@ -90,6 +91,7 @@
 (require 'lang-java)
 (require 'lang-ruby)
 (require 'lang-bash)
+(require 'lang-coffee)
 (require 'w3m-config)
 
 (require 'desktop-config)
