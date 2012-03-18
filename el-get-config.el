@@ -12,6 +12,7 @@
 
 (setq packages-modes
       '(
+        coffee-mode
         crontab-mode
         css-mode
         csv-mode
