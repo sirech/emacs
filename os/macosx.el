@@ -5,8 +5,8 @@
 (setenv "ANT_HOME" "/usr/share/ant")
 
 ;; Remap meta and command
-(setq mac-command-modifier (quote control))
-(setq mac-control-modifier (quote meta))
+(setq mac-command-modifier (quote meta))
+(setq mac-control-modifier (quote control))
 
 ;; Stop C-h from hiding
 (setq mac-pass-command-to-system nil)
