@@ -15,7 +15,7 @@ binaries](http://emacsformacosx.com/) (I dislike both Carbon- and
 Aquamacs). Windows users can get it directly [from
 GNU](http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-23.1-bin-i386.zip).
 
-2. Link the directory with `ln -s ~/{emacs_dir} ~/.emacs`.
+2. Link the directory with `ln -s ~/{emacs_dir} ~/.emacs.d`.
 
 3. Map the CAPS key to control. It is very easy to do in Mac OS X and
 Linux, you'll need some registry files for windows.
