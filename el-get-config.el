@@ -16,6 +16,7 @@
         crontab-mode
         css-mode
         csv-mode
+        feature-mode
         haskell-mode
         js2-mode
         lua-mode
@@ -55,6 +56,7 @@
         color-theme
         dired+
         dired-single
+        expand-region
         fringe-helper
         htmlize
         ibuffer-vc
@@ -120,6 +122,10 @@
                :after (progn
                         (eval-after-load 'ruby-mode
                           '(define-key ruby-mode-map [f1] 'yari))))
+
+        (:name expand-region
+               :after (progn
+                        (global-set-key (kbd "C-=") 'er/expand-region)))
         ))
 
 (el-get 'sync
