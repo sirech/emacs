@@ -38,7 +38,6 @@
         ruby-electric
         ruby-mode
         rspec-mode
-        rvm
         yari
         ))
 

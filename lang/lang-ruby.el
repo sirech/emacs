@@ -100,10 +100,6 @@
 ;; We never want to edit Rubinius bytecode
 (add-to-list 'completion-ignored-extensions ".rbc")
 
-;; If rvm is used, ruby is not in the path and emacs can't find it
-(require 'rvm)
-(rvm-autodetect-ruby)
-
 ;;; Rake
 
 (defun pcomplete/rake ()
