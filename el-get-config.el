@@ -69,6 +69,7 @@
       '(
         (:name auto-complete
                :after (progn
+                        (require 'auto-complete)
                         (global-set-key (kbd "M-s") 'auto-complete)
                         (define-key ac-complete-mode-map "\C-g" 'ac-stop)
                         (define-key ac-complete-mode-map "\r" 'ac-complete)
