@@ -124,7 +124,11 @@ inside _el-get-packages_.
 
 It is assumed that a connection to the internet is available. _git_
 (>= 1.7) and _svn_ are also required and have to be reachable from
-_emacs_
+_emacs_.
+
+This process tends to fail a lot the first time it tries to download
+every package. Just keep trying, specially if errors like **End Of
+Buffer** come up.
 
 ### Proxies
 
