@@ -21,7 +21,7 @@
 ;;
 ;;  * ruby:
 ;;   - rvm is problematic for flymake because JRuby doesn't work with
-;;   it. Therefore is best to use a globally installed ruby, which
+;;   it. Therefore it is best to use a globally installed ruby, which
 ;;   should be found by the ruby-binary variable (the looked paths
 ;;   might need adjustment).
 ;;
