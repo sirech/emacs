@@ -100,6 +100,15 @@
 ;; We never want to edit Rubinius bytecode
 (add-to-list 'completion-ignored-extensions ".rbc")
 
+;;; Cucumber
+
+(eval-after-load 'ruby-mode
+  '(progn
+     (add-to-list 'ruby-font-lock-syntactic-keywords
+                  '("\\(\\(\\)\\(\\)\\|Given\\|When\\|Then\\)\\s *\\(/\\)[^/\n\\\\]*\\(\\\\.[^/\n\\\\]*\\)*\\(/\\)"
+                    (4 (7 . ?/))
+                    (6 (7 . ?/))))))
+
 ;;; Rake
 
 (defun pcomplete/rake ()
