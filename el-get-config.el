@@ -60,7 +60,6 @@
         htmlize
         ibuffer-vc
         mark-multiple
-        psvn
         pos-tip
         ))
 
