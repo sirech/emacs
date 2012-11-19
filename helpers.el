@@ -26,13 +26,14 @@ non-nil, the subdirectories are also added to the path"
   PATH. E.g: (add-to-path \"/usr/local/bin\" \"/usr/bin\")"
   (dolist (path lst)
     (let ( (full-path (expand-file-name path)))
-      (add-to-list 'exec-path full-path)
-      (update-env-var "PATH" full-path))))
+      (when (file-directory-p full-path)
+        (add-to-list 'exec-path full-path)
+        (update-env-var "PATH" full-path)))))
 
 (defun update-env-var (var new-path)
   "Adds new-path to the given environment
   variable. E.g: (update-env-var \"PATH\" \"/usr/local/bin\")"
-  (setenv var (concat (getenv var) ":" new-path)))
+  (setenv var (concat new-path ":" (getenv var))))
 
 
 ;; Simulate try/catch, credit to https://curiousprogrammer.wordpress.com/2009/06/08/error-handling-in-emacs-lisp/

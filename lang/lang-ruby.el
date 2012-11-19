@@ -20,10 +20,7 @@
 ;;   - copy the rsense.el file in /etc to the /vendor directory in emacs
 ;;
 ;;  * ruby:
-;;   - rvm is problematic for flymake because JRuby doesn't work with
-;;   it. Therefore it is best to use a globally installed ruby, which
-;;   should be found by the ruby-binary variable (the looked paths
-;;   might need adjustment).
+;;   - Don't use JRuby for the global ruby, like if you use rbenv
 ;;
 ;; NOTE: As of today (11/2010), it is not possible to use RSense with JRuby
 
@@ -31,6 +28,9 @@
 
 (add-hook 'ruby-mode-hook 'run-coding-hook)
 (add-hook 'ruby-mode-hook 'ruby-activate-ide)
+
+;; Add rbenv to path
+(add-to-path "~/.rbenv/shims" "~/.rbenv/bin")
 
 ;; Check availability
 (setq rsense-home (getenv "RSENSE_HOME"))
@@ -81,7 +81,7 @@
 
 (defvar ruby-binary
   (cond
-   ((executable-find "/usr/bin/ruby") "/usr/bin/ruby")
+   ((executable-find "ruby") "ruby")
    (t nil))
   "The ruby binary (not JRuby!)")
 
