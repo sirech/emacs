@@ -74,7 +74,8 @@
 
 (defun ruby-activate-rcodetools ()
   (require 'auto-complete-ruby)
-  (ac-ruby-init))
+  (ac-ruby-setup)
+  (auto-complete-mode t))
 
 ;; Initialization
 
