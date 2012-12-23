@@ -140,5 +140,10 @@ comma-separated value files." t)
             (unless (string-match "question" oddmuse-post)
               (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post)))))
 
+
+;; MOVING AROUND
+
+(global-set-key (vector 'remap 'goto-line) 'goto-line-with-feedback)
+
 (provide 'misc)
 ;;; misc.el ends here
