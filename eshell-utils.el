@@ -1,5 +1,6 @@
 ;;; eshell-utils.el --- Making the defaults a bit saner
 ;;
+(setenv "PAGER" "cat")
 
 (setq eshell-cmpl-cycle-completions nil
       eshell-save-history-on-exit t
@@ -16,7 +17,6 @@
      (require 'em-prompt)
      (require 'em-term)
      (require 'em-cmpl)
-     (setenv "PAGER" "cat")
      (set-face-attribute 'eshell-prompt nil :foreground "turquoise1")
      ;; Change face for eshell -- emacs 23 only
      (when (> emacs-major-version 22)
