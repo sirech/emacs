@@ -56,6 +56,11 @@
 ;; Yank current word into isearch
 (define-key isearch-mode-map (kbd "C-x") 'isearch-yank-current-word)
 
+;; Exit search at the end
+(define-key isearch-mode-map [(control return)] 'isearch-exit-other-end)
+
+(define-key isearch-mode-map [(meta z)] 'zap-to-isearch)
+
 ;; File finding
 (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
 (global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
