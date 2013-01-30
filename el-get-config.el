@@ -38,6 +38,7 @@
         ruby-mode
         rspec-mode
         yari
+        rhtml-mode
         ))
 
 (setq packages-utilities
