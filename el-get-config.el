@@ -26,7 +26,6 @@
 (setq packages-git
       '(
         git-commit-mode
-        gist
         magit
         mo-git-blame
         ))
@@ -83,9 +82,10 @@
                         (setq ac-menu-height 10)
                         (setq ac-dwim nil)))
 
-        (:name browse-kill-ring
-               :after (progn
-                        (browse-kill-ring-default-keybindings)))
+       (:name browse-kill-ring
+              :after (progn
+		       (require 'browse-kill-ring)
+                       (browse-kill-ring-default-keybindings)))
 
         (:name dired-single
                :after (progn
@@ -112,10 +112,11 @@
                         (global-set-key (kbd "C-<") 'mark-previous-like-this)
                         (global-set-key (kbd "C->") 'mark-next-like-this)))
 
-        (:name paredit
-               :after (progn
-                        (define-key paredit-mode-map (kbd "M-s") 'nil)
-                        (define-key paredit-mode-map (kbd "M-r") 'nil)))
+       (:name paredit
+              :after (progn
+		       (require 'paredit)
+                       (define-key paredit-mode-map (kbd "M-s") 'nil)
+                       (define-key paredit-mode-map (kbd "M-r") 'nil)))
 
         (:name yari
                :after (progn
