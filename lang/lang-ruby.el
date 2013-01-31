@@ -28,7 +28,7 @@
 
 (add-hook 'ruby-mode-hook 'run-coding-hook)
 (add-hook 'ruby-mode-hook 'ruby-activate-ide)
-(add-hook ‘ruby-mode-hook (lambda () (add-to-list ‘write-file-functions ‘delete-trailing-whitespace)))
+(add-hook 'ruby-mode-hook (lambda () (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
 ;; Add rbenv to path
 (add-to-path "~/.rbenv/shims" "~/.rbenv/bin")
