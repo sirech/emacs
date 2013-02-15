@@ -2,15 +2,6 @@
 ;;
 ;; This settings have some external dependencies:
 ;;
-;; To use auto completion you can use either rcodetools or
-;; rsense. RSense seems to be more powerful, but it does not work very
-;; well with JRuby and is more difficult to install. Usually one of
-;; both should suffice.
-;;
-;;  * rcodetools:
-;;   - gem install rcodetools
-;;   - copy rcodetools.el in the gem file to vendor/
-;;
 ;;  * rsense:
 ;;   - http://cx4a.org/software/rsense/index.html
 ;;   - extract the file (e.g /opt)
@@ -40,10 +31,6 @@
   "Determines whether ruby is installed in the system"
   ruby-binary)
 
-(defun rcodetools-is-present ()
-  "Determines whether rcodetools is installed"
-  (locate-library "rcodetools"))
-
 (defun rsense-is-present ()
   "Determines if rsense can be run"
   (and
@@ -65,18 +52,11 @@
 (defun ruby-activate-ide ()
   (turn-on-flymake 'ruby-is-present)
   (when (rsense-is-present)
-    (ruby-activate-rsense))
-  (when (rcodetools-is-present)
-    (ruby-activate-rcodetools)))
+    (ruby-activate-rsense)))
 
 (defun ruby-activate-rsense ()
   (require 'rsense)
   (add-to-list 'ac-sources 'ac-source-rsense-method))
-
-(defun ruby-activate-rcodetools ()
-  (require 'auto-complete-ruby)
-  (ac-ruby-setup)
-  (auto-complete-mode t))
 
 ;; Initialization
 
@@ -90,7 +70,7 @@
   '(progn
 
      (setq ruby-deep-indent-paren nil)
-     
+
      ;; Indent things like :after_save properly
      (defadvice ruby-indent-line (after line-up-args activate)
        (let (indent prev-indent arg-indent)

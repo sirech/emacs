@@ -50,7 +50,6 @@
 (setq packages-other
       '(
         auto-complete
-        auto-complete-ruby
         browse-kill-ring
         color-theme
         dired+
