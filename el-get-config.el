@@ -16,6 +16,7 @@
         crontab-mode
         css-mode
         csv-mode
+        eproject
         feature-mode
         haskell-mode
         js2-mode
@@ -54,6 +55,7 @@
         color-theme
         dired+
         dired-single
+        etags-select
         expand-region
         fringe-helper
         htmlize

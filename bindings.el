@@ -74,6 +74,9 @@
 (global-set-key (kbd "<f3>")   'bm-next)
 (global-set-key (kbd "S-<f3>") 'bm-previous)
 
+;; ctags
+(global-set-key (kbd "M-.") 'my-find-tag)
+
 ;;
 ;; MOVING BETWEEN WINDOWS
 ;;
