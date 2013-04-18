@@ -28,6 +28,9 @@
       save-place-file (concat dotfiles-dir "places")
       dired-listing-switches "-alh")
 
+;; Replace selected text with input
+(delete-selection-mode +1)
+
 ;; Enable useful commands
 (put 'narrow-to-region 'disabled nil)
 
