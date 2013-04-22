@@ -40,12 +40,6 @@
   (interactive)
   (byte-recompile-directory dotfiles-dir 0))
 
-(defun sudo-edit (&optional arg)
-  (interactive "p")
-  (if (or arg (not buffer-file-name))
-      (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-
 (defun locate-library-parent-dir (library)
   "Returns the directory where the given library is situated. The
 result includes a trailing '/' at the end"

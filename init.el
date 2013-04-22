@@ -57,6 +57,7 @@
 (require 'theme)
 (require 'mode-line-config)
 (require 'ibuffer-config)
+(require 'ido-config)
 (require 'git-config)
 (require 'appearance)
 (require 'misc)
