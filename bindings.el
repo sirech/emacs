@@ -107,6 +107,9 @@
 ;; Remap indent region to a smarter func.
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 
+;; Smart open line
+(global-set-key (kbd "S-RET") 'smart-open-line)
+
 ;;
 ;; RECTANGLE
 ;;
