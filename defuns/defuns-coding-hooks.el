@@ -51,6 +51,7 @@
 (add-hook 'coding-hook 'pretty-lambdas)
 (add-hook 'coding-hook 'add-watchwords)
 (add-hook 'coding-hook 'turn-on-autocomplete)
+(add-hook 'coding-hook 'subword-mode)
 
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."
