@@ -104,6 +104,9 @@
 ;; Align your code in a pretty way.
 (global-set-key (kbd "C-x \\") 'align-regexp)
 
+;; Remap indent region to a smarter func.
+(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+
 ;;
 ;; RECTANGLE
 ;;
