@@ -48,11 +48,17 @@
         smex
         ))
 
+(setq packages-theme
+      '(
+        color-theme
+        color-theme-solarized
+        powerline
+        ))
+
 (setq packages-other
       '(
         auto-complete
         browse-kill-ring
-        color-theme
         dired+
         dired-single
         etags-select
@@ -135,6 +141,7 @@
         packages-ruby
         packages-git
         packages-utilities
+        packages-theme
         packages-other
         (loop for src in el-get-sources collect (el-get-source-name src)))
 

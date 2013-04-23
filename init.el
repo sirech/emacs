@@ -54,8 +54,6 @@
     (load file)))
 (require 'bindings)
 (require 'server) ; load before misc to avoid problem in windows
-(require 'theme)
-(require 'mode-line-config)
 (require 'ibuffer-config)
 (require 'ido-config)
 (require 'git-config)

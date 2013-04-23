@@ -3,7 +3,7 @@
 ;; Part of the Emacs Starter Kit
 
 ;; Color Theme
-(color-theme-sirech)
+(color-theme-solarized-dark)
 
 ;; UTF-8 all the way
 
