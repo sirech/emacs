@@ -21,9 +21,6 @@
 (add-hook 'ruby-mode-hook 'ruby-activate-ide)
 (add-hook 'ruby-mode-hook (lambda () (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
-;; Add rbenv to path
-(add-to-path "~/.rbenv/shims" "~/.rbenv/bin")
-
 ;; Check availability
 (setq rsense-home (getenv "RSENSE_HOME"))
 
