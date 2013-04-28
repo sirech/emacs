@@ -68,6 +68,7 @@
         ibuffer-vc
         mark-multiple
         pos-tip
+        flycheck
         ))
 
 ;; With initialization
@@ -106,6 +107,15 @@
                                   (interactive)
                                   (joc-dired-single-buffer "..")))))))
 
+        (:name expand-region
+               :after (progn
+                        (global-set-key (kbd "C-=") 'er/expand-region)))
+
+        (:name flycheck
+               :after (progn
+			(require 'flycheck)
+                        (global-flycheck-mode)))
+
         (:name git-commit-mode
                :after (progn
                         (add-hook 'git-commit-mode-hook 'run-coding-hook)
@@ -126,19 +136,15 @@
                         (define-key paredit-mode-map (kbd "M-s") 'nil)
                         (define-key paredit-mode-map (kbd "M-r") 'nil)))
 
-        (:name yari
-               :after (progn
-                        (eval-after-load 'ruby-mode
-                          '(define-key ruby-mode-map [f1] 'yari))))
-
         (:name rbenv
                :after (progn
                         (rbenv--setup)
                         (rbenv-use-global)))
 
-        (:name expand-region
+        (:name yari
                :after (progn
-                        (global-set-key (kbd "C-=") 'er/expand-region)))
+                        (eval-after-load 'ruby-mode
+                          '(define-key ruby-mode-map [f1] 'yari))))
         ))
 
 (el-get 'sync

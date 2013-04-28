@@ -10,8 +10,8 @@
 ;;   - create config file with 'ruby etc/config.rb > ~/.rsense' (must be IN RSENSE_HOME)
 ;;   - copy the rsense.el file in /etc to the /vendor directory in emacs
 ;;
-;;  * ruby:
-;;   - Don't use JRuby for the global ruby, like if you use rbenv
+;;  * rubocop:
+;;   - gem install rubocop
 ;;
 ;; NOTE: As of today (11/2010), it is not possible to use RSense with JRuby
 
@@ -23,10 +23,6 @@
 
 ;; Check availability
 (setq rsense-home (getenv "RSENSE_HOME"))
-
-(defun ruby-is-present ()
-  "Determines whether ruby is installed in the system"
-  ruby-binary)
 
 (defun rsense-is-present ()
   "Determines if rsense can be run"
@@ -47,7 +43,6 @@
 ;; Activation
 
 (defun ruby-activate-ide ()
-  (turn-on-flymake 'ruby-is-present)
   (when (rsense-is-present)
     (ruby-activate-rsense)))
 
@@ -123,12 +118,12 @@
 
 ;;; Cucumber
 
-(eval-after-load 'ruby-mode
-  '(progn
-     (add-to-list 'ruby-font-lock-syntactic-keywords
-                  '("\\(\\(\\)\\(\\)\\|Given\\|When\\|Then\\)\\s *\\(/\\)[^/\n\\\\]*\\(\\\\.[^/\n\\\\]*\\)*\\(/\\)"
-                    (4 (7 . ?/))
-                    (6 (7 . ?/))))))
+;; (eval-after-load 'ruby-mode
+;;   '(progn
+;;      (add-to-list 'ruby-font-lock-syntactic-keywords
+;;                   '("\\(\\(\\)\\(\\)\\|Given\\|When\\|Then\\)\\s *\\(/\\)[^/\n\\\\]*\\(\\\\.[^/\n\\\\]*\\)*\\(/\\)"
+;;                     (4 (7 . ?/))
+;;                     (6 (7 . ?/))))))
 
 ;;; Rake
 
@@ -160,24 +155,12 @@ exec-to-string command, but it works and seems fast"
              (delete-region (point-min) (point-max))))))
      (ad-activate 'ruby-do-run-w/compilation)))
 
-(defvar flymake-ruby-err-line-patterns '(("^\\(.*\\):\\([0-9]+\\): \\(.*\\)$"
-                                          1 2 nil 3)))
-
-(eval-after-load 'flymake
-  '(setup-flymake 'ruby-is-present "rb" 'flymake-ruby-init nil flymake-ruby-err-line-patterns))
-
-;; Auto Syntax Error highlight, credit to the starter kit from www.peepcode.com
-
-(defun flymake-ruby-init ()
-  (custom-flymake-init ruby-binary "-c" "-W2"))
-
 ;; Rinari (Minor Mode for Ruby On Rails)
 ;; (setq rinari-major-modes
 ;;       (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
 ;;             'css-mode-hook 'yaml-mode-hook 'javascript-mode-hook))
 
 ;; TODO: set up ri
-;; TODO: electric
 
 (provide 'lang-ruby)
-;; lang-ruby.el ends here
+;;; lang-ruby.el ends here
