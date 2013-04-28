@@ -35,7 +35,6 @@
       '(
         inf-ruby
         ruby-compilation
-        ruby-electric
         ruby-mode
         rspec-mode
         yari
