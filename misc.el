@@ -83,9 +83,11 @@
 ;; Seed the random-number generator
 (random t)
 
-;; Don't clutter up directories with files~
-(setq backup-directory-alist `(("." . ,(expand-file-name
-                                        (concat dotfiles-dir "backups")))))
+;; store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 ;; nxhtml stuff
 (setq mumamo-chunk-coloring 'submode-colored
