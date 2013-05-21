@@ -109,6 +109,10 @@ comma-separated value files." t)
 ;; Default to unified diffs
 (setq diff-switches "-u")
 
+
+;; Cleanup whitespace before saving
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
 ;; COMPLETION
 
 ;; Hippie expand: at times perhaps too hip

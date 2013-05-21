@@ -167,8 +167,7 @@ Don't mess with special buffers."
   "Perform a bunch of operations on the whitespace content of a buffer."
   (interactive)
   (indent-buffer)
-  (untabify-buffer)
-  (delete-trailing-whitespace))
+  (whitespace-cleanup))
 
 (defun recentf-ido-find-file ()
   "Find a recent file using ido."

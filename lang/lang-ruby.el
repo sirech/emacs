@@ -19,7 +19,6 @@
 
 (add-hook 'ruby-mode-hook 'run-coding-hook)
 (add-hook 'ruby-mode-hook 'ruby-activate-ide)
-(add-hook 'ruby-mode-hook (lambda () (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
 ;; Check availability
 (setq rsense-home (getenv "RSENSE_HOME"))
