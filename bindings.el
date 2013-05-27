@@ -111,6 +111,14 @@
 (global-set-key (kbd "S-RET") 'smart-open-line)
 
 ;;
+;; NAVIGATION
+;;
+
+;; remap C-a to `smarter-move-beginning-of-line'
+(global-set-key [remap move-beginning-of-line]
+                'smarter-move-beginning-of-line)
+
+;;
 ;; RECTANGLE
 ;;
 
