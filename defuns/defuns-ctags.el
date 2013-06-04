@@ -24,6 +24,8 @@
   (if (file-exists-p (concat (eproject-root) "TAGS"))
       (visit-project-tags)
     (build-ctags))
-  (etags-select-find-tag-at-point))
+  (if (region-active-p)
+      (etags-select-find (buffer-substring-no-properties (region-beginning) (region-end)))
+    (etags-select-find-tag-at-point)))
 
 (provide 'defuns-ctags)
