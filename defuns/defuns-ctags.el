@@ -9,7 +9,9 @@
   (interactive)
   (message "building project tags")
   (let ((root (eproject-root)))
-    (shell-command (concat (executable-find "ctags") " -e -R --extra=+fq --exclude=db --exclude=test --exclude=.git --exclude=public -f " root "TAGS " root)))
+    (shell-command (concat (executable-find "ctags") " -e -R --extra=+fq"
+                           " --exclude=db --exclude=doc --exclude=log --exclude=tmp --exclude=.git --exclude=public"
+                           " -f " root "TAGS " root)))
   (visit-project-tags)
   (message "tags built successfully"))
 
