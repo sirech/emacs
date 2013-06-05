@@ -9,6 +9,7 @@ lib/*
 places
 server
 tramp
+TAGS
 vendor/decompile.el
 vendor/emacs-eclim
 vendor/emacs-w3m
