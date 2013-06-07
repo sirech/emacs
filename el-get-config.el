@@ -113,7 +113,7 @@
 
         (:name flycheck
                :after (progn
-			(require 'flycheck)
+                        (require 'flycheck)
                         (global-flycheck-mode)))
 
         (:name git-commit-mode
