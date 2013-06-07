@@ -91,6 +91,7 @@
 (require 'lang-ruby)
 (require 'lang-bash)
 (require 'lang-coffee)
+(require 'lang-haskell)
 (require 'w3m-config)
 
 (require 'desktop-config)
