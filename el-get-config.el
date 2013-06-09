@@ -61,7 +61,9 @@
         browse-kill-ring
         dired+
         dired-single
-        etags-select
+        ;; TODO: stop using custom version when changes are somehow
+        ;; integrated
+        ;; etags-select
         expand-region
         fringe-helper
         htmlize
