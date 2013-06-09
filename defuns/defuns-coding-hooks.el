@@ -42,6 +42,9 @@
   (require 'auto-complete)
   (auto-complete-mode 1))
 
+(defun turn-on-yasnippet ()
+  (yas-minor-mode))
+
 (add-hook 'coding-hook 'local-column-number-mode)
 (add-hook 'coding-hook 'local-comment-auto-fill)
 (add-hook 'coding-hook 'turn-on-hl-line-mode)
@@ -53,6 +56,7 @@
 (add-hook 'coding-hook 'turn-on-autocomplete)
 (add-hook 'coding-hook 'subword-mode)
 (add-hook 'coding-hook 'electric-pair-mode)
+(add-hook 'coding-hook 'turn-on-yasnippet)
 
 (defun run-coding-hook ()
   "Enable things that are convenient across all coding buffers."

@@ -65,12 +65,13 @@
         ;; integrated
         ;; etags-select
         expand-region
+        flycheck
         fringe-helper
         htmlize
         ibuffer-vc
         mark-multiple
         pos-tip
-        flycheck
+        yasnippet
         ))
 
 ;; With initialization
@@ -147,6 +148,11 @@
                :after (progn
                         (eval-after-load 'ruby-mode
                           '(define-key ruby-mode-map [f1] 'yari))))
+
+        (:name yasnippet
+               :after (progn
+                        (yas/reload-all)))
+
         ))
 
 (el-get 'sync
