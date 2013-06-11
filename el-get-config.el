@@ -112,6 +112,7 @@
 
         (:name expand-region
                :after (progn
+                        (global-set-key (kbd "C-+") 'er/contract-region)
                         (global-set-key (kbd "C-=") 'er/expand-region)))
 
         (:name flycheck
