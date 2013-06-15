@@ -108,7 +108,8 @@
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 
 ;; Smart open line
-(global-set-key (kbd "S-RET") 'smart-open-line)
+(global-set-key (kbd "M-o") 'smart-open-line)
+(global-set-key (kbd "M-O") 'smart-open-line-above)
 
 ;;
 ;; NAVIGATION
