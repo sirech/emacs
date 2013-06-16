@@ -2,7 +2,7 @@
 
 ;; Export env variables
 (setenv "WORKSPACE" "~/Documents/workspace")
-(setenv "RSENSE_HOME" "/opt/local/share/rsense-0.3")
+(setenv "RSENSE_HOME" "/opt/rsense")
 
 ;; Use inconsolata font
 (set-face-attribute 'default nil :family "Inconsolata" :height 160)
