@@ -18,6 +18,7 @@
         csv-mode
         eproject
         feature-mode
+        haml-mode
         haskell-mode
         js2-mode
         lua-mode
