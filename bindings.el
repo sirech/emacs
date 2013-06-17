@@ -12,7 +12,7 @@
 (global-set-key (kbd "C-<f10>") 'menu-bar-mode)
 
 ;; Font size
-(define-key global-map (kbd "C-+") 'text-scale-increase)
+(define-key global-map (kbd "C-_") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
 ;;
