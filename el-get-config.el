@@ -23,6 +23,7 @@
         js2-mode
         lua-mode
         markdown-mode
+        sass-mode
         yaml-mode))
 
 (setq packages-git
