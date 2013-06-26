@@ -62,9 +62,6 @@ get loaded. Other relevant files are:
 * desktop-config.el: Automatically save/restore the session when
   restarting emacs.
 
-* flymake-config.el: Helpers and settings to use flymake for syntax
-  error highlighting.
-
 * git-config.el: Git related configuration.
 
 * ibuffer-config.el: Customize the ibuffer window.

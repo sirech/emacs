@@ -62,7 +62,6 @@
 (require 'registers)
 (require 'eshell-utils)
 (require 'shell-utils)
-(require 'flymake-config)
 
 (load custom-file 'noerror)
 
