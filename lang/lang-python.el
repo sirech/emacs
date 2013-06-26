@@ -1,16 +1,15 @@
 ;;; lang-python.el --- Configuration for Python
 ;;
-;; This settings have some external dependencies:
-;;  * for pyflakes
-;;   - easy_install pyflakes
-;;  * for pep8
-;;   - easy_install pep8
-;;  * for pymacs
+;; Flycheck:
+;;  * pip install flake8
+;;
+;; IDE:
+;;  * pymacs
 ;;   - goto http://pymacs.progiciels-bpi.ca/ (beta versions don't seem
 ;; to work)
 ;;   - download pymacs, untar, run python setup.py install
 ;;   - put pymacs.el in vendor/
-;;  * for rope
+;;  * rope
 ;;   - hg clone http://bitbucket.org/agr/rope
 ;;   - hg clone http://bitbucket.org/agr/ropemacs
 ;;   - hg clone http://bitbucket.org/agr/ropemode
@@ -29,20 +28,8 @@
 ;; Set hooks
 
 (add-hook 'python-mode-hook 'run-coding-hook)
-(add-hook 'python-mode-hook 'py-activate-ide)
 
 ;; Check availability
-
-(defun pyflakes-is-present ()
-  "Determines if the syntax checker is present in the system"
-  (executable-find "pyflakes"))
-
-(defun pep8-is-present ()
-  "Determines if the program that checks if a python script
-complies with the PEP8 (code style guide) is present in the
-system"
-  (executable-find "pep8"))
-
 (defun py-ide-is-present ()
   "Determines if the IDE can be run"
   (locate-library "pymacs"))
@@ -51,38 +38,11 @@ system"
 (when (py-ide-is-present)
   (ac-ropemacs-initialize))
 
-(defun py-activate-ide ()
-  (turn-on-flymake 'pyflakes-is-present))
-
 ;; Initialization
-
-;; Remap checker to pep8
-(eval-after-load 'python
-  '(when (pep8-is-present)
-     (setq python-check-command "pep8 --repeat")))
-
-(eval-after-load 'python
-  '(progn
-     ;;
-     ;; KEYBINDINGS
-     ;;
-
-     ;; VS-style compile controls
-     (define-key python-mode-map (kbd "<f7>") 'python-check-command)
-     ))
-
 (eval-after-load 'ropemacs
   '(progn
      (define-key ropemacs-local-keymap (kbd "M-.") 'rope-goto-definition)
      ))
-
-(eval-after-load 'flymake
-  '(setup-flymake 'pyflakes-is-present "py" 'flymake-pyflakes-init))
-
-;; Auto Syntax Error Highlight, credit to http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/
-
-(defun flymake-pyflakes-init ()
-  (custom-flymake-init "pyflakes"))
 
 (provide 'lang-python)
 ;;; lang-python.el ends here
