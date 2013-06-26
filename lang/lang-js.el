@@ -22,15 +22,6 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
-;; Set hooks
-
-(add-hook 'espresso-mode-hook 'run-coding-hook)
-(add-hook 'espresso-mode-hook 'moz-minor-mode)
-(add-hook 'espresso-mode-hook 'esk-paredit-nonlisp)
-
-(add-hook 'js2-mode-hook 'run-coding-hook)
-(add-hook 'js2-mode-hook 'moz-minor-mode)
-
 ;; Check availability
 
 (defvar jslint-location (concat lib-dir "jslint.js")
@@ -42,17 +33,11 @@
 
 ;; Initialization
 
-;; (eval-after-load 'espresso
-;;   '(progn
-;;      (define-key espresso-mode-map "{" 'paredit-open-curly)
-;;      (define-key espresso-mode-map "}" 'paredit-close-curly-and-newline)
-;;      ;; fixes problem with pretty function font-lock
-;;      (define-key espresso-mode-map (kbd ",") 'self-insert-command)
-;;      (font-lock-add-keywords
-;;       'espresso-mode `(("\\(function *\\)("
-;;                         (0 (progn (compose-region (match-beginning 1)
-;;                                                   (match-end 1) "ƒ")
-;;                                   nil)))))))
+(setq js2-basic-offset 2)
+(setq js2-bounce-indent t)
+(setq js2-cleanup-whitespace t)
+(setq js2-highlight-level 3)
+(setq js2-indent-on-enter-key t)
 
 ;; Check code using JSLint, credit to http://codesnippets.joyent.com/posts/show/8031
 
@@ -66,11 +51,6 @@
 ;; TODO: use *compilation*, like http://stackoverflow.com/questions/2465705/emacs-can-i-set-compilation-error-regexp-alist-in-a-mode-hook-fn
 (eval-after-load 'js2-mode
   '(progn
-     (setq js2-highlight-level 3)
-     (setq js2-basic-offset 2)
-     (setq js2-cleanup-whitespace t)
-     (setq js2-indent-on-enter-key t)
-
      (when (jslint-is-present)
 
        (setq *jslint-target-buffer* nil)
