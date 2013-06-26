@@ -29,6 +29,8 @@
 (setq packages-git
       '(
         git-commit-mode
+        ;; Might fail with makeinfo: command not found
+        ;; - ubuntu: apt-get install texinfo
         magit
         mo-git-blame
         ))

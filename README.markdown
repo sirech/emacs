@@ -9,7 +9,7 @@ Starter Kit](http://github.com/technomancy/emacs-starter-kit/).
 
 ## Installation
 
-1. Grab GNU Emacs (23.* version!), use apt or another package manager
+1. Grab GNU Emacs (24.* version!), use apt or another package manager
 for linux. For Mac OS X, use [some prebuilt
 binaries](http://emacsformacosx.com/) (I dislike both Carbon- and
 Aquamacs). Windows users can get it directly [from
@@ -130,6 +130,9 @@ This process tends to fail a lot the first time it tries to download
 every package. Just keep trying, specially if errors like **End Of
 Buffer** come up.
 
+Some tips to install some packages can be found in the
+_el-get-config.el_ file itself.
+
 ### Proxies
 
 If you are behind a proxy, _git_ might not work. To solve this,
@@ -144,13 +147,13 @@ depending on the protocol used:
 * git: You need to define the environment variable
   _GIT_PROXY_COMMAND_, and set it to a script that does the
   redirecting
-  
+
     (setenv "GIT_PROXY_COMMAND" "git-proxy-cmd")
-    
+
 Where the command can be something like:
 
     nc -x$PROXY_HOST:1080 -X5 $*
-    
+
 The command has to be in a directory added to the _PATH_ in emacs
 (like `~/bin`).
 
@@ -175,8 +178,8 @@ Some interesting places to learn more about emacs:
 * http://www.dotemacs.de/
 
 * http://snarfed.org/space/why%20I%20don't%20run%20shells%20inside%20Emacs
-  
+
 * [This page is not actively maintained anymore, but still has good
   stuff](http://emacsblog.org/)
-  
+
 * [Some more tricks](http://sachachua.com/wp/category/emacs/)
