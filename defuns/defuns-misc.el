@@ -142,4 +142,14 @@ file of a buffer in an external program."
 to determine which ones should go"
   (set list-var (remove-if remove-fn (symbol-value list-var))))
 
+(defmacro advise-commands (advice-name commands &rest body)
+  "Apply advice named ADVICE-NAME to multiple COMMANDS.
+
+The body of the advice is in BODY."
+  `(progn
+     ,@(mapcar (lambda (command)
+                 `(defadvice ,command (before ,(intern (concat (symbol-name command) "-" advice-name)) activate)
+                    ,@body))
+               commands)))
+
 (provide 'defuns-misc)
