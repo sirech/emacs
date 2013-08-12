@@ -23,6 +23,7 @@
         js2-mode
         lua-mode
         markdown-mode
+        puppet-mode
         sass-mode
         yaml-mode))
 
