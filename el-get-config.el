@@ -16,7 +16,6 @@
         crontab-mode
         css-mode
         csv-mode
-        eproject
         feature-mode
         haml-mode
         haskell-mode
@@ -76,6 +75,8 @@
         ibuffer-vc
         mark-multiple
         pos-tip
+        projectile
+        pkg-info ;; needed for projectile
         yasnippet
         ))
 
@@ -144,6 +145,10 @@
                         (require 'paredit)
                         (define-key paredit-mode-map (kbd "M-s") 'nil)
                         (define-key paredit-mode-map (kbd "M-r") 'nil)))
+
+        (:name projectile
+               :after (progn
+                        (setq projectile-keymap-prefix (kbd "C-c p"))))
 
         (:name rbenv
                :after (progn
