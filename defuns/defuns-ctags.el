@@ -6,12 +6,13 @@
 ;;  - Mac OS X: brew install ctags
 
 ;; TODO: remove when the package is not loaded from vendor anymore
+;; TODO 2: Or better yet, transition to the find tag stuff in projectile
 (require 'etags-select)
 
 (defun build-ctags ()
   (interactive)
   (message "building project tags")
-  (let ((root (eproject-root)))
+  (let ((root (projectile-project-root)))
     (shell-command (concat (executable-find "ctags") " -e -R --extra=+fq"
                            " --exclude=db --exclude=doc --exclude=log --exclude=tmp --exclude=.git --exclude=public"
                            " -f " root "TAGS " root)))
@@ -20,12 +21,12 @@
 
 (defun visit-project-tags ()
   (interactive)
-  (let ((tags-file (concat (eproject-root) "TAGS")))
+  (let ((tags-file (concat (projectile-project-root) "TAGS")))
     (visit-tags-table tags-file)
     (message (concat "Loaded " tags-file))))
 
 (defun create-or-visit-project-tags ()
-  (if (file-exists-p (concat (eproject-root) "TAGS"))
+  (if (file-exists-p (concat (projectile-project-root) "TAGS"))
       (visit-project-tags)
     (build-ctags)))
 
