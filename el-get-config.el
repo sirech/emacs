@@ -20,6 +20,7 @@
         haml-mode
         haskell-mode
         js2-mode
+        json-mode
         lua-mode
         markdown-mode
         puppet-mode
@@ -32,6 +33,7 @@
         ;; Might fail with makeinfo: command not found
         ;; - ubuntu: apt-get install texinfo
         magit
+        git-rebase-mode
         mo-git-blame
         ))
 
@@ -70,6 +72,7 @@
         ;; etags-select
         expand-region
         flycheck
+        flycheck-color-mode-line
         fringe-helper
         htmlize
         ibuffer-vc
@@ -125,6 +128,12 @@
                :after (progn
                         (require 'flycheck)
                         (global-flycheck-mode)))
+
+        (:name flycheck-color-mode-line
+               :after (progn
+                        (require 'flycheck-color-mode-line)
+                        (eval-after-load "flycheck"
+                          '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))))
 
         (:name git-commit-mode
                :after (progn
