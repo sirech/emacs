@@ -155,6 +155,37 @@ exec-to-string command, but it works and seems fast"
              (delete-region (point-min) (point-max))))))
      (ad-activate 'ruby-do-run-w/compilation)))
 
+;; Convert to new hash syntax, credit to
+;; https://github.com/purcell/ruby-hash-syntax
+(defun ruby-toggle-hash-syntax (beg end)
+  "Toggle syntax of ruby hash literal in region from BEG to END between ruby 1.8 and 1.9 styles."
+  (interactive "r")
+  (save-excursion
+    (let ((limit (copy-marker (max beg end))))
+      (goto-char (min beg end))
+      (cond
+       ((ruby-hash-syntax--code-has-pattern "=>" limit)
+        (ruby-hash-syntax--replace ":\\([a-zA-Z0-9_]+\\) *=> *" "\\1: " limit))
+       ((ruby-hash-syntax--code-has-pattern "\\w+:" limit)
+        (ruby-hash-syntax--replace "\\([a-zA-Z0-9_]+\\):\\( *\\(?:\"\\(?:\\\"\\|[^\"]\\)*\"\\|'\\(?:\\'\\|[^']\\)*'\\|[a-zA-Z0-9_]+([^)]*)\\|[^,]+\\)\\)" ":\\1 =>\\2" limit))))))
+
+(defun ruby-hash-syntax--code-has-pattern (pat limit)
+  "A version of `search-forward' which skips over string literals.
+Argument PAT is the search patter, while LIMIT is the maximum
+search extent."
+  (let (found)
+    (save-excursion
+      (while (and (not found) (re-search-forward pat limit t))
+        (unless (elt (syntax-ppss) 3)
+          ;; If this isn't inside a string...
+          (setq found t))))
+    found))
+
+(defun ruby-hash-syntax--replace (from to end)
+  "Replace FROM with TO up to END."
+  (while (re-search-forward from end t)
+    (replace-match to nil nil)))
+
 ;; Rinari (Minor Mode for Ruby On Rails)
 ;; (setq rinari-major-modes
 ;;       (list 'mumamo-after-change-major-mode-hook 'dired-mode-hook 'ruby-mode-hook
