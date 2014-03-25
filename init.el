@@ -43,8 +43,8 @@
 ;; backport some functionality to Emacs 22 if needed
 (require 'dominating-file)
 
-;; Load up el-get, the package manager
-(require 'el-get-config)
+;; Load up external packages
+(require 'packages)
 
 ;; Load up customizations
 ;; Functions (load all files in defuns-dir)

@@ -3,8 +3,7 @@
 .emacs.desktop*
 auto-save-list
 backups
-el-get/*
-el-get-packages/*
+elpa/
 lib/*
 places
 server
