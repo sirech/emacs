@@ -46,7 +46,8 @@
   (yas-minor-mode))
 
 (add-hook 'coding-hook 'local-column-number-mode)
-(add-hook 'coding-hook 'local-comment-auto-fill)
+;; This is fucking up ruby mode
+;; (add-hook 'coding-hook 'local-comment-auto-fill)
 (add-hook 'coding-hook 'turn-on-hl-line-mode)
 (add-hook 'coding-hook 'turn-on-save-place-mode)
 (add-hook 'coding-hook 'turn-on-whitespace)
