@@ -60,6 +60,7 @@
 (eval-after-load 'ruby-mode
   '(progn
 
+     (setq ruby-insert-encoding-magic-comment nil)
      (setq ruby-deep-indent-paren nil)
 
      ;; Indent things like :after_save properly
