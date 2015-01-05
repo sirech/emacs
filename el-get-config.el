@@ -161,6 +161,7 @@
 
         (:name rbenv
                :after (progn
+			(require 'rbenv)
                         (rbenv--setup)
                         (rbenv-use-global)))
 
@@ -171,6 +172,7 @@
 
         (:name yasnippet
                :after (progn
+			(require 'yasnippet)
                         (yas/reload-all)))
 
         ))
