@@ -25,6 +25,7 @@
         markdown-mode
         puppet-mode
         sass-mode
+        scss-mode
         yaml-mode))
 
 (setq packages-git
@@ -161,7 +162,7 @@
 
         (:name rbenv
                :after (progn
-			(require 'rbenv)
+                        (require 'rbenv)
                         (rbenv--setup)
                         (rbenv-use-global)))
 
@@ -172,7 +173,7 @@
 
         (:name yasnippet
                :after (progn
-			(require 'yasnippet)
+                        (require 'yasnippet)
                         (yas/reload-all)))
 
         ))
