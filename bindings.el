@@ -56,6 +56,9 @@
 ;; Yank current word into isearch
 (define-key isearch-mode-map (kbd "C-x") 'isearch-yank-current-word)
 
+;; Delete the whole non matching part
+(define-key isearch-mode-map (kbd "DEL") 'isearch-delete-something)
+
 ;; Exit search at the end
 (define-key isearch-mode-map [(control return)] 'isearch-exit-other-end)
 
