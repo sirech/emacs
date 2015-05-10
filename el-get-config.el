@@ -83,11 +83,16 @@
         projectile
         pkg-info ;; needed for projectile
         yasnippet
+        ace-window
         ))
 
 ;; With initialization
 (setq el-get-sources
       '(
+        (:name ace-window
+               :after (progn
+                        (global-set-key (kbd "C-x o") 'ace-window)))
+
         (:name auto-complete
                :after (progn
                         (require 'auto-complete)
