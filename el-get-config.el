@@ -35,6 +35,7 @@
         ;; - ubuntu: apt-get install texinfo
         magit
         git-rebase-mode
+        git-timemachine
         mo-git-blame
         ))
 
