@@ -1,3 +1,6 @@
+This configuration is no longer used actively. Instead, I've switched
+to a configuration based on [prelude](https://github.com/sirech/prelude).
+
 # Emacs Configuration
 
 This is a configuration for _Emacs_. It focuses mainly on programming,
